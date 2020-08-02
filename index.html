@@ -101,7 +101,7 @@ map.on('load', function() {
     });
 
     map.addLayer({
-        id: 'slipways2',
+        id: 'slipways',
         source: 'slipways',
         'source-layer': 'slipways',
         type: 'symbol',
@@ -109,7 +109,15 @@ map.on('load', function() {
             // Set the label content to the
             // feature's `name` property
             // text-field: ['get', 'name'],
-            'icon-image': 'dot-blue',
+            'icon-image': [
+                "step",
+                ["zoom"],
+                "dot-blue",
+                13,
+                "slipway-15",
+                22,
+                "slipway-15"
+                ],
             'icon-size': [
                 'interpolate', ['linear'], ['zoom'],
                 0, 0.3,
@@ -122,10 +130,11 @@ map.on('load', function() {
 
     // When a click event occurs on a feature in the places layer, open a popup at the
     // location of the feature, with description HTML from its properties.
-    map.on('click', 'slipways2', function(e) {
+    map.on('click', 'slipways', function(e) {
         var coordinates = e.features[0].geometry.coordinates.slice();
-        var description = '<h2>' + e.features[0].properties.name + '</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a><br>';
-
+        var launchName = e.features[0].properties.name;
+        var osmNode  = e.features[0].properties['@id'];
+        var description = (launchName) ? '<h2>' + launchName + '</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/' + osmNode + '">Suggest edit</a>' : '<h2>Boat Launch</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/">Suggest edit</a>';
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
