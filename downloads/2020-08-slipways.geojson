@@ -2,8 +2,47 @@
   "type": "FeatureCollection",
   "generator": "overpass-ide",
   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
-  "timestamp": "2020-08-01T16:29:03Z",
+  "timestamp": "2020-08-02T17:30:04Z",
   "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/30783861",
+        "leisure": "slipway",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "source": "PGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2767616,
+          47.5711541
+        ]
+      },
+      "id": "node/30783861"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/30788737",
+        "leisure": "slipway",
+        "name": "Boat Launch",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "website": "http://www.mercergov.org/Page.asp?NavID=393"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2019896,
+          47.5779962
+        ]
+      },
+      "id": "node/30788737"
+    },
     {
       "type": "Feature",
       "properties": {
@@ -39,6 +78,37 @@
         ]
       },
       "id": "node/32501953"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/32778693",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9204189,
+          47.6602124
+        ]
+      },
+      "id": "node/32778693"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/32795483",
+        "leisure": "slipway",
+        "source": "PGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5316849,
+          47.5883416
+        ]
+      },
+      "id": "node/32795483"
     },
     {
       "type": "Feature",
@@ -167,12 +237,13 @@
       "type": "Feature",
       "properties": {
         "@id": "node/37452759",
-        "leisure": "slipway"
+        "leisure": "slipway",
+        "name": "Meldrum Bar Park"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.6165085,
+          -122.616508,
           45.3772384
         ]
       },
@@ -646,6 +717,44 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/47433049",
+        "leisure": "slipway",
+        "name": "Ankeny Road North",
+        "operator": "Washington Department of Fish and Wildlife",
+        "surface": "gravel",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30104"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.3215968,
+          47.6404309
+        ]
+      },
+      "id": "node/47433049"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/47473386",
+        "leisure": "slipway",
+        "name": "Ankeny Road South",
+        "operator": "Washington Department of Fish and Wildlife",
+        "surface": "unpaved",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30105"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.3273346,
+          47.6281618
+        ]
+      },
+      "id": "node/47473386"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/47474224",
         "leisure": "slipway"
       },
@@ -767,6 +876,25 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/48079098",
+        "leisure": "slipway",
+        "name": "Alkali Lake Hand Boat Launch",
+        "operator": "Washington Department of Fish and Wildlife",
+        "surface": "unpaved",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30102"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.4944727,
+          47.5236721
+        ]
+      },
+      "id": "node/48079098"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/48214181",
         "leisure": "slipway",
         "name": "Billy Clapp Lake Boat Launch",
@@ -786,6 +914,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/48489301",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5593248,
+          47.7487126
+        ]
+      },
+      "id": "node/48489301"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/48492454",
         "leisure": "slipway"
       },
@@ -797,6 +940,21 @@
         ]
       },
       "id": "node/48492454"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/48544173",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6403084,
+          47.5412438
+        ]
+      },
+      "id": "node/48544173"
     },
     {
       "type": "Feature",
@@ -984,32 +1142,17 @@
     {
       "type": "Feature",
       "properties": {
-        "@id": "node/85140525",
+        "@id": "node/53199476",
         "leisure": "slipway"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -124.228387,
-          41.783874
+          -122.1889341,
+          47.5749283
         ]
       },
-      "id": "node/85140525"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "node/85247999",
-        "leisure": "slipway"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -124.1809205,
-          41.8141506
-        ]
-      },
-      "id": "node/85247999"
+      "id": "node/53199476"
     },
     {
       "type": "Feature",
@@ -1057,6 +1200,37 @@
         ]
       },
       "id": "node/128942783"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/129610774",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.4589325,
+          47.5534842
+        ]
+      },
+      "id": "node/129610774"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/129869987",
+        "leisure": "slipway",
+        "source": "Bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.7478127,
+          47.6703512
+        ]
+      },
+      "id": "node/129869987"
     },
     {
       "type": "Feature",
@@ -1112,6 +1286,24 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/259582710",
+        "leisure": "slipway",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2994559,
+          47.6483583
+        ]
+      },
+      "id": "node/259582710"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/267790715",
         "leisure": "slipway"
       },
@@ -1138,6 +1330,40 @@
         ]
       },
       "id": "node/276890689"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/295086921",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2332185,
+          47.7520949
+        ]
+      },
+      "id": "node/295086921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/298291905",
+        "leisure": "slipway",
+        "name": "Ferdinand Street Boat Launch",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.261514,
+          47.5573373
+        ]
+      },
+      "id": "node/298291905"
     },
     {
       "type": "Feature",
@@ -1174,6 +1400,26 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/313617758",
+        "access": "yes",
+        "leisure": "slipway",
+        "name": "Franklin Landing",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2371349,
+          47.5707968
+        ]
+      },
+      "id": "node/313617758"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/346507277",
         "leisure": "slipway"
       },
@@ -1201,6 +1447,24 @@
         ]
       },
       "id": "node/354008180"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/356850833",
+        "leisure": "slipway",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3974525,
+          47.5402826
+        ]
+      },
+      "id": "node/356850833"
     },
     {
       "type": "Feature",
@@ -1328,6 +1592,21 @@
         ]
       },
       "id": "node/364342249"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/366083046",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.3062576,
+          47.5188754
+        ]
+      },
+      "id": "node/366083046"
     },
     {
       "type": "Feature",
@@ -1479,6 +1758,92 @@
         ]
       },
       "id": "node/403465312"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/403465343",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.2804938,
+          47.5402401
+        ]
+      },
+      "id": "node/403465343"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/410792259",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3262652,
+          47.7843647
+        ]
+      },
+      "id": "node/410792259"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/410792398",
+        "leisure": "slipway",
+        "note": "No motorized boats at this launch. Hand-carried boats only.",
+        "vehicle": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3324986,
+          47.7829954
+        ]
+      },
+      "id": "node/410792398"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/411659067",
+        "addr:housenumber": "1222",
+        "addr:street": "Harbor Ave SW",
+        "fee": "yes",
+        "leisure": "slipway",
+        "name": "Don Armeni Boat Ramp",
+        "seamark:information": "manually;winch",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "website": "http://www.seattle.gov/parks/park_detail.asp?ID=3917"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.382124,
+          47.5927575
+        ]
+      },
+      "id": "node/411659067"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/416333178",
+        "leisure": "slipway",
+        "source": "yahoo aerial imagery"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2498879,
+          47.6768804
+        ]
+      },
+      "id": "node/416333178"
     },
     {
       "type": "Feature",
@@ -1670,12 +2035,13 @@
       "type": "Feature",
       "properties": {
         "@id": "node/613315033",
-        "leisure": "slipway"
+        "leisure": "slipway",
+        "name": "Willamette Park, West Linn"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.6496814,
+          -122.649681,
           45.3385713
         ]
       },
@@ -1685,7 +2051,8 @@
       "type": "Feature",
       "properties": {
         "@id": "node/613315036",
-        "leisure": "slipway"
+        "leisure": "slipway",
+        "name": "Willamette Park, West Linn"
       },
       "geometry": {
         "type": "Point",
@@ -1695,6 +2062,103 @@
         ]
       },
       "id": "node/613315036"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/638867953",
+        "leisure": "slipway",
+        "name": "14th Avenue Northwest Boat Ramp",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "website": "http://www.seattle.gov/parks/park_detail.asp?ID=4010"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3735129,
+          47.6607606
+        ]
+      },
+      "id": "node/638867953"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/638867974",
+        "access": "yes",
+        "leisure": "slipway",
+        "name": "Atlantic City Boat Ramp",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2631829,
+          47.5229163
+        ]
+      },
+      "id": "node/638867974"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/638868052",
+        "fixme": "Needs ground survey",
+        "leisure": "slipway",
+        "name": "Adams Street Boat Ramp",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "website": "http://www.seattle.gov/parks/park_detail.asp?ID=1000002"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.267115,
+          47.5654177
+        ]
+      },
+      "id": "node/638868052"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/640696830",
+        "leisure": "slipway",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2858533,
+          47.5905182
+        ]
+      },
+      "id": "node/640696830"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/646495574",
+        "access": "yes",
+        "leisure": "slipway",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.411274,
+          47.5707416
+        ]
+      },
+      "id": "node/646495574"
     },
     {
       "type": "Feature",
@@ -1716,6 +2180,24 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/660994732",
+        "leisure": "slipway",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3197586,
+          47.5314595
+        ]
+      },
+      "id": "node/660994732"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/666959182",
         "leisure": "slipway"
       },
@@ -1727,6 +2209,181 @@
         ]
       },
       "id": "node/666959182"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/674522911",
+        "leisure": "slipway",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3502739,
+          47.5599912
+        ]
+      },
+      "id": "node/674522911"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/679497545",
+        "leisure": "slipway",
+        "name": "Eddie Vine Boat Ramp",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "website": "http://www.seattle.gov/parks/park_detail.asp?ID=1000003"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4037878,
+          47.6869436
+        ]
+      },
+      "id": "node/679497545"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/679497556",
+        "leisure": "slipway",
+        "source": "yahoo_wms"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4038068,
+          47.6868126
+        ]
+      },
+      "id": "node/679497556"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/697303597",
+        "leisure": "slipway",
+        "name": "Kenmore Boat Launch",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30250"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2506217,
+          47.7543811
+        ]
+      },
+      "id": "node/697303597"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/698418432",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1982287,
+          47.7574643
+        ]
+      },
+      "id": "node/698418432"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/700751885",
+        "leisure": "slipway",
+        "name": "Marina Park Boat Ramp",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "source": "http://www.kirklandwa.gov/depart/parks/Kirkland_Marina.htm"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2095918,
+          47.6756024
+        ]
+      },
+      "id": "node/700751885"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/703816516",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2261125,
+          47.5244733
+        ]
+      },
+      "id": "node/703816516"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/703816787",
+        "leisure": "slipway",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2535442,
+          47.5851476
+        ]
+      },
+      "id": "node/703816787"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/733243209",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2103877,
+          47.5974678
+        ]
+      },
+      "id": "node/733243209"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/770847134",
+        "leisure": "slipway",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3267751,
+          47.6467134
+        ]
+      },
+      "id": "node/770847134"
     },
     {
       "type": "Feature",
@@ -1763,6 +2420,41 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/844400229",
+        "leisure": "slipway",
+        "name": "boat launch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.7550623,
+          47.7540499
+        ]
+      },
+      "id": "node/844400229"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/873554695",
+        "leisure": "slipway",
+        "name": "Sweyolocken Boat Launch",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1861381,
+          47.5820737
+        ]
+      },
+      "id": "node/873554695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/878278687",
         "leisure": "slipway"
       },
@@ -1774,6 +2466,90 @@
         ]
       },
       "id": "node/878278687"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/879565342",
+        "leisure": "slipway",
+        "source": "yahoo_wms;survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.2941855,
+          47.6168736
+        ]
+      },
+      "id": "node/879565342"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/879565373",
+        "leisure": "slipway",
+        "source": "yahoo_wms;survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.2944128,
+          47.6168137
+        ]
+      },
+      "id": "node/879565373"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/879565423",
+        "leisure": "slipway",
+        "source": "yahoo_wms;survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.2944981,
+          47.6167391
+        ]
+      },
+      "id": "node/879565423"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/879565426",
+        "leisure": "slipway",
+        "name": "Million Dollar Mile South",
+        "operator": "Washington Department of Fish and Wildlife",
+        "source": "yahoo_wms;survey",
+        "surface": "concrete",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30162"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.2587548,
+          47.7190048
+        ]
+      },
+      "id": "node/879565426"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/879565428",
+        "leisure": "slipway",
+        "source": "yahoo_wms;survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.2940729,
+          47.6168715
+        ]
+      },
+      "id": "node/879565428"
     },
     {
       "type": "Feature",
@@ -1823,6 +2599,24 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/900241583",
+        "leisure": "slipway",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2021027,
+          47.5054555
+        ]
+      },
+      "id": "node/900241583"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/944070010",
         "leisure": "slipway"
       },
@@ -1864,6 +2658,78 @@
         ]
       },
       "id": "node/1017558338"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1046781067",
+        "leisure": "slipway",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6457705,
+          47.7329179
+        ]
+      },
+      "id": "node/1046781067"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1051004321",
+        "leisure": "slipway",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6399232,
+          47.7250683
+        ]
+      },
+      "id": "node/1051004321"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1053639712",
+        "leisure": "slipway",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6161378,
+          47.6519931
+        ]
+      },
+      "id": "node/1053639712"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1083031122",
+        "leisure": "slipway",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5163928,
+          47.5168253
+        ]
+      },
+      "id": "node/1083031122"
     },
     {
       "type": "Feature",
@@ -1946,6 +2812,21 @@
         ]
       },
       "id": "node/1244702960"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1260612609",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0551739,
+          47.5645134
+        ]
+      },
+      "id": "node/1260612609"
     },
     {
       "type": "Feature",
@@ -2149,6 +3030,24 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/1410232561",
+        "access": "foot",
+        "lanes": "0",
+        "leisure": "slipway",
+        "surface": "sand"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.6674494,
+          47.5749251
+        ]
+      },
+      "id": "node/1410232561"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/1427354141",
         "leisure": "slipway",
         "name": "Upper McIver Boat Ramp"
@@ -2340,16 +3239,34 @@
       "type": "Feature",
       "properties": {
         "@id": "node/1568387737",
+        "access": "yes",
+        "leisure": "slipway",
+        "name": "Cathedral Park",
+        "surface": "paved"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.764289,
+          45.5875134
+        ]
+      },
+      "id": "node/1568387737"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1589715262",
         "leisure": "slipway"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.7642899,
-          45.5875134
+          -122.7021297,
+          47.5657253
         ]
       },
-      "id": "node/1568387737"
+      "id": "node/1589715262"
     },
     {
       "type": "Feature",
@@ -2395,6 +3312,22 @@
         ]
       },
       "id": "node/1631437497"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1631901491",
+        "leisure": "slipway",
+        "source": "Bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.366811,
+          47.5524731
+        ]
+      },
+      "id": "node/1631901491"
     },
     {
       "type": "Feature",
@@ -2573,6 +3506,22 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/1726059970",
+        "leisure": "slipway",
+        "source": "yahoo aerial imagery"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2499423,
+          47.6767847
+        ]
+      },
+      "id": "node/1726059970"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/1737919696",
         "leisure": "slipway",
         "name": "Warrenton Boat Launch"
@@ -2666,12 +3615,13 @@
       "type": "Feature",
       "properties": {
         "@id": "node/1801228925",
-        "leisure": "slipway"
+        "leisure": "slipway",
+        "name": "Clackamette Park"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.6030206,
+          -122.60302,
           45.3722737
         ]
       },
@@ -2788,6 +3738,27 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/1855693681",
+        "access": "yes",
+        "description": "The Port of Keyport is a small marina with 14 private slips, 250 feet of guest moorage in five 50-foot slips, and a boat launch ramp. More information is available online: http://portofkeyport.com/",
+        "fee": "no",
+        "lanes": "1",
+        "leisure": "slipway",
+        "name": "Port of Keyport Marina",
+        "surface": "concrete"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6241587,
+          47.704337
+        ]
+      },
+      "id": "node/1855693681"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/1887142047",
         "leisure": "slipway",
         "name": "Eastside Boat Ramp"
@@ -2850,12 +3821,13 @@
       "type": "Feature",
       "properties": {
         "@id": "node/1979889467",
-        "leisure": "slipway"
+        "leisure": "slipway",
+        "name": "Meldrum Bar Park"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.6166056,
+          -122.616605,
           45.377193
         ]
       },
@@ -3451,6 +4423,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/2303147140",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1128607,
+          47.6551127
+        ]
+      },
+      "id": "node/2303147140"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/2308559642",
         "leisure": "slipway"
       },
@@ -3507,6 +4494,22 @@
         ]
       },
       "id": "node/2334481298"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2336659811",
+        "access": "private",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0817227,
+          47.7714989
+        ]
+      },
+      "id": "node/2336659811"
     },
     {
       "type": "Feature",
@@ -3885,6 +4888,36 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/2453047617",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.3401809,
+          47.5882058
+        ]
+      },
+      "id": "node/2453047617"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2453047710",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.3955209,
+          47.5905389
+        ]
+      },
+      "id": "node/2453047710"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/2454856943",
         "leisure": "slipway",
         "name": "Solo Point Boat Launch"
@@ -4106,6 +5139,38 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/2505440043",
+        "leisure": "slipway",
+        "name": "boat launch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.2160531,
+          47.6565733
+        ]
+      },
+      "id": "node/2505440043"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2505471362",
+        "leisure": "slipway",
+        "name": "boat launch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.2197948,
+          47.6658137
+        ]
+      },
+      "id": "node/2505471362"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/2518110748",
         "leisure": "slipway"
       },
@@ -4274,6 +5339,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/2552035389",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5962716,
+          47.6001727
+        ]
+      },
+      "id": "node/2552035389"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/2564179274",
         "leisure": "slipway"
       },
@@ -4337,6 +5417,22 @@
         ]
       },
       "id": "node/2593826816"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2597280573",
+        "leisure": "slipway",
+        "source": "Bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.8704885,
+          47.7450949
+        ]
+      },
+      "id": "node/2597280573"
     },
     {
       "type": "Feature",
@@ -4582,6 +5678,24 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/2673889744",
+        "leisure": "slipway",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.327336,
+          47.6456322
+        ]
+      },
+      "id": "node/2673889744"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/2687319451",
         "leisure": "slipway"
       },
@@ -4775,21 +5889,6 @@
         ]
       },
       "id": "node/2724368584"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "node/2731490989",
-        "leisure": "slipway"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -124.1487775,
-          41.8906277
-        ]
-      },
-      "id": "node/2731490989"
     },
     {
       "type": "Feature",
@@ -5004,6 +6103,28 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/2882744459",
+        "addr:housenumber": "2301",
+        "addr:street": "North Northlake Way",
+        "leisure": "slipway",
+        "name": "Sunnyside Avenue North Boat Ramp",
+        "seamark:information": "by car;manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "website": "http://www.seattle.gov/parks/park_detail.asp?ID=3903"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3307088,
+          47.6502415
+        ]
+      },
+      "id": "node/2882744459"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/2890671851",
         "leisure": "slipway"
       },
@@ -5075,6 +6196,38 @@
         ]
       },
       "id": "node/2912457941"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2921322149",
+        "leisure": "slipway",
+        "name": "Public Boat Launch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4994267,
+          47.7963001
+        ]
+      },
+      "id": "node/2921322149"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2921322150",
+        "leisure": "slipway",
+        "name": "Public Boat Launch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4995049,
+          47.7963182
+        ]
+      },
+      "id": "node/2921322150"
     },
     {
       "type": "Feature",
@@ -5185,6 +6338,81 @@
         ]
       },
       "id": "node/3016500415"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3021393640",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.6181102,
+          47.6978679
+        ]
+      },
+      "id": "node/3021393640"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3021394016",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.629692,
+          47.6751098
+        ]
+      },
+      "id": "node/3021394016"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3026602635",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.50567,
+          47.5309117
+        ]
+      },
+      "id": "node/3026602635"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3026602904",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.5063191,
+          47.5292782
+        ]
+      },
+      "id": "node/3026602904"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3026612055",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.555602,
+          47.5004345
+        ]
+      },
+      "id": "node/3026612055"
     },
     {
       "type": "Feature",
@@ -5440,6 +6668,24 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3098131281",
+        "access": "foot",
+        "lanes": "0",
+        "leisure": "slipway",
+        "surface": "dirt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.6746043,
+          47.5768488
+        ]
+      },
+      "id": "node/3098131281"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3099061167",
         "leisure": "slipway",
         "name": "Cowlitz Trout Hatchery",
@@ -5484,6 +6730,21 @@
         ]
       },
       "id": "node/3101126030"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3101296134",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.5934952,
+          44.2556085
+        ]
+      },
+      "id": "node/3101296134"
     },
     {
       "type": "Feature",
@@ -5719,6 +6980,23 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3144711657",
+        "access": "yes",
+        "leisure": "slipway",
+        "name": "Atlantic City Boat Ramp"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2631806,
+          47.5228034
+        ]
+      },
+      "id": "node/3144711657"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3169486046",
         "leisure": "slipway"
       },
@@ -5824,6 +7102,22 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3243887826",
+        "leisure": "slipway",
+        "name": "Trout Unlimited Boat Launch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.6592364,
+          47.5921233
+        ]
+      },
+      "id": "node/3243887826"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3248858384",
         "leisure": "slipway",
         "leisure:slipway": "foot"
@@ -5866,6 +7160,21 @@
         ]
       },
       "id": "node/3255836934"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3281684771",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0496989,
+          47.7856618
+        ]
+      },
+      "id": "node/3281684771"
     },
     {
       "type": "Feature",
@@ -5946,6 +7255,23 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3425977413",
+        "leisure": "slipway",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1933858,
+          47.7544733
+        ]
+      },
+      "id": "node/3425977413"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3440768560",
         "leisure": "slipway"
       },
@@ -6021,6 +7347,60 @@
         ]
       },
       "id": "node/3526439100"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3527072293",
+        "leisure": "slipway",
+        "name": "Waterway 23 Boat Launch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3467182,
+          47.6485341
+        ]
+      },
+      "id": "node/3527072293"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3591069899",
+        "leisure": "slipway",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "source": "PGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2767182,
+          47.571016
+        ]
+      },
+      "id": "node/3591069899"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3591069912",
+        "leisure": "slipway",
+        "seamark:information": "by car",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility",
+        "source": "PGS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2768255,
+          47.5713124
+        ]
+      },
+      "id": "node/3591069912"
     },
     {
       "type": "Feature",
@@ -6284,6 +7664,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3623369348",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.7086445,
+          47.5657317
+        ]
+      },
+      "id": "node/3623369348"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3626006953",
         "leisure": "slipway"
       },
@@ -6510,6 +7905,66 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3636584609",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.429562,
+          47.5716772
+        ]
+      },
+      "id": "node/3636584609"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3636584610",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.4358139,
+          47.5714503
+        ]
+      },
+      "id": "node/3636584610"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3636711525",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.3964873,
+          47.5874982
+        ]
+      },
+      "id": "node/3636711525"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3636711782",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.4250042,
+          47.5745549
+        ]
+      },
+      "id": "node/3636711782"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3637543526",
         "leisure": "slipway"
       },
@@ -6521,6 +7976,21 @@
         ]
       },
       "id": "node/3637543526"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3637608858",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.4613023,
+          47.5464581
+        ]
+      },
+      "id": "node/3637608858"
     },
     {
       "type": "Feature",
@@ -6708,6 +8178,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3672508553",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8847877,
+          47.6351126
+        ]
+      },
+      "id": "node/3672508553"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3681567731",
         "leisure": "slipway"
       },
@@ -6848,6 +8333,36 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3708284468",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.0919999,
+          47.7651782
+        ]
+      },
+      "id": "node/3708284468"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3708314947",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.985019,
+          47.7971601
+        ]
+      },
+      "id": "node/3708314947"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3708838803",
         "leisure": "slipway"
       },
@@ -6874,6 +8389,22 @@
         ]
       },
       "id": "node/3709823483"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3711358268",
+        "leisure": "slipway",
+        "source": "Bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.7826774,
+          47.671408
+        ]
+      },
+      "id": "node/3711358268"
     },
     {
       "type": "Feature",
@@ -7204,6 +8735,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3782758370",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4820084,
+          47.5401788
+        ]
+      },
+      "id": "node/3782758370"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3807670487",
         "leisure": "slipway"
       },
@@ -7293,6 +8839,21 @@
         ]
       },
       "id": "node/3823629414"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3829526500",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3292336,
+          47.6811813
+        ]
+      },
+      "id": "node/3829526500"
     },
     {
       "type": "Feature",
@@ -7388,12 +8949,14 @@
       "type": "Feature",
       "properties": {
         "@id": "node/3948753548",
-        "leisure": "slipway"
+        "leisure": "slipway",
+        "name": "Lacamas Lake Boat Launch",
+        "vehicle": "no"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.4097413,
+          -122.409741,
           45.6053742
         ]
       },
@@ -7432,6 +8995,36 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3996456933",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.2089181,
+          47.7113888
+        ]
+      },
+      "id": "node/3996456933"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3996456936",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.2088495,
+          47.7114159
+        ]
+      },
+      "id": "node/3996456936"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3999752567",
         "leisure": "slipway"
       },
@@ -7443,6 +9036,36 @@
         ]
       },
       "id": "node/3999752567"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3999766297",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9845665,
+          47.6089744
+        ]
+      },
+      "id": "node/3999766297"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4024317583",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0920239,
+          47.653687
+        ]
+      },
+      "id": "node/4024317583"
     },
     {
       "type": "Feature",
@@ -7631,6 +9254,22 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/4174109396",
+        "leisure": "slipway",
+        "name": "Nine Mile Boat Launch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.5672678,
+          47.7939358
+        ]
+      },
+      "id": "node/4174109396"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/4185861050",
         "leisure": "slipway",
         "name": "Kayak Landing"
@@ -7647,32 +9286,18 @@
     {
       "type": "Feature",
       "properties": {
-        "@id": "node/4194453886",
-        "leisure": "slipway"
+        "@id": "node/4188950590",
+        "leisure": "slipway",
+        "name": "Riverside State Park Boat Launch"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -124.1828003,
-          41.7417101
+          -117.5321926,
+          47.7886972
         ]
       },
-      "id": "node/4194453886"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "node/4194453995",
-        "leisure": "slipway"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -124.1829032,
-          41.7417642
-        ]
-      },
-      "id": "node/4194453995"
+      "id": "node/4188950590"
     },
     {
       "type": "Feature",
@@ -7733,6 +9358,27 @@
         ]
       },
       "id": "node/4226856156"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4234658989",
+        "leisure": "slipway",
+        "name": "North End Boat Ramp",
+        "note": "Hand-carried boats only",
+        "operator": "Vashon PRSD",
+        "source": "King County GIS",
+        "source:id": "3230601",
+        "website": "https://vashonparks.org/north-end-boat-ramp"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4640915,
+          47.5087271
+        ]
+      },
+      "id": "node/4234658989"
     },
     {
       "type": "Feature",
@@ -7799,18 +9445,34 @@
     {
       "type": "Feature",
       "properties": {
-        "@id": "node/4269212790",
+        "@id": "node/4264019117",
         "leisure": "slipway",
-        "name": "Rocky Bar River Access"
+        "name": "Plese Flats",
+        "vehicle": "no"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -123.1277391,
-          41.8159967
+          -117.5115259,
+          47.7277398
         ]
       },
-      "id": "node/4269212790"
+      "id": "node/4264019117"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4272386970",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3336278,
+          47.5429369
+        ]
+      },
+      "id": "node/4272386970"
     },
     {
       "type": "Feature",
@@ -7826,6 +9488,22 @@
         ]
       },
       "id": "node/4277615846"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4282028273",
+        "leisure": "slipway",
+        "source": "Bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.3983541,
+          42.5963605
+        ]
+      },
+      "id": "node/4282028273"
     },
     {
       "type": "Feature",
@@ -7982,6 +9660,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/4370170720",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.6900807,
+          47.5630385
+        ]
+      },
+      "id": "node/4370170720"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/4412557270",
         "leisure": "slipway"
       },
@@ -8012,6 +9705,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/4414275165",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0423959,
+          47.6972277
+        ]
+      },
+      "id": "node/4414275165"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/4418449203",
         "leisure": "slipway",
         "name": "Al Helenberg Memorial Boat Launch"
@@ -8028,6 +9736,36 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/4424150442",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2632913,
+          47.6880044
+        ]
+      },
+      "id": "node/4424150442"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4424150445",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2638014,
+          47.6884405
+        ]
+      },
+      "id": "node/4424150445"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/4449951852",
         "leisure": "slipway",
         "name": "Swallows Park Boat Ramp"
@@ -8040,6 +9778,21 @@
         ]
       },
       "id": "node/4449951852"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4466812369",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2215977,
+          47.6474473
+        ]
+      },
+      "id": "node/4466812369"
     },
     {
       "type": "Feature",
@@ -8070,6 +9823,21 @@
         ]
       },
       "id": "node/4591256438"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4595260666",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.1674794,
+          47.7641536
+        ]
+      },
+      "id": "node/4595260666"
     },
     {
       "type": "Feature",
@@ -8197,6 +9965,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/4742792180",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3736077,
+          47.6607563
+        ]
+      },
+      "id": "node/4742792180"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/4747946760",
         "leisure": "slipway"
       },
@@ -8238,6 +10021,91 @@
         ]
       },
       "id": "node/4749107921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4808436420",
+        "leisure": "slipway",
+        "name": "Waterway 19 Canoe/Kayak Launch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3329844,
+          47.6467772
+        ]
+      },
+      "id": "node/4808436420"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4814557962",
+        "leisure": "slipway",
+        "name": "Hartzell Creek Boat Launch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -124.2030627,
+          47.5520206
+        ]
+      },
+      "id": "node/4814557962"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4840648193",
+        "leisure": "slipway",
+        "name": "Gage Station Boat Launch",
+        "operator": "Washington Department of Fish and Wildlife",
+        "surface": "unpaved",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30132"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.5033014,
+          47.5132261
+        ]
+      },
+      "id": "node/4840648193"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4840648219",
+        "leisure": "slipway",
+        "name": "Alkali Lake Boat Launch",
+        "operator": "Washington Department of Fish and Wildlife",
+        "surface": "unpaved",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30102"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.4937159,
+          47.522769
+        ]
+      },
+      "id": "node/4840648219"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4840648247",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.4260271,
+          47.5773704
+        ]
+      },
+      "id": "node/4840648247"
     },
     {
       "type": "Feature",
@@ -8351,6 +10219,41 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/4911305972",
+        "leisure": "slipway",
+        "source": "Bing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.3528352,
+          42.587692
+        ]
+      },
+      "id": "node/4911305972"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4993200933",
+        "leisure": "slipway",
+        "name": "32nd Avenue West Boat Launch",
+        "seamark:information": "manually",
+        "seamark:small_craft_facility:category": "slipway",
+        "seamark:type": "small_craft_facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3989938,
+          47.632119
+        ]
+      },
+      "id": "node/4993200933"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/5002574213",
         "leisure": "slipway",
         "name": "Sturdivant Park Boat Ramp"
@@ -8381,6 +10284,21 @@
         ]
       },
       "id": "node/5009832221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5012516660",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5516235,
+          47.7289419
+        ]
+      },
+      "id": "node/5012516660"
     },
     {
       "type": "Feature",
@@ -8584,6 +10502,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/5077381414",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2148137,
+          47.4984827
+        ]
+      },
+      "id": "node/5077381414"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/5079284282",
         "leisure": "slipway"
       },
@@ -8610,6 +10543,21 @@
         ]
       },
       "id": "node/5102491943"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5103764214",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.4457142,
+          46.9915264
+        ]
+      },
+      "id": "node/5103764214"
     },
     {
       "type": "Feature",
@@ -9039,21 +10987,6 @@
     {
       "type": "Feature",
       "properties": {
-        "@id": "node/5600961283",
-        "leisure": "slipway"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -123.3791265,
-          41.7898251
-        ]
-      },
-      "id": "node/5600961283"
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "@id": "node/5611772978",
         "leisure": "slipway"
       },
@@ -9207,6 +11140,36 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/5794744583",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8511123,
+          47.5516488
+        ]
+      },
+      "id": "node/5794744583"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5794747029",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9275533,
+          47.638748
+        ]
+      },
+      "id": "node/5794747029"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/5802692627",
         "access": "private",
         "leisure": "slipway"
@@ -9252,6 +11215,21 @@
         ]
       },
       "id": "node/5819531687"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5828433403",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.5273475,
+          47.7014399
+        ]
+      },
+      "id": "node/5828433403"
     },
     {
       "type": "Feature",
@@ -9462,6 +11440,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/6038669564",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0852253,
+          47.7729937
+        ]
+      },
+      "id": "node/6038669564"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/6072594908",
         "leisure": "slipway"
       },
@@ -9488,6 +11481,36 @@
         ]
       },
       "id": "node/6138141695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6167446167",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.704216,
+          47.5638885
+        ]
+      },
+      "id": "node/6167446167"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6167446168",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.7032176,
+          47.5623255
+        ]
+      },
+      "id": "node/6167446168"
     },
     {
       "type": "Feature",
@@ -9663,6 +11686,21 @@
         ]
       },
       "id": "node/6447159240"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6454092379",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.6299681,
+          47.6754807
+        ]
+      },
+      "id": "node/6454092379"
     },
     {
       "type": "Feature",
@@ -9854,6 +11892,25 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/6704303324",
+        "access": "foot",
+        "fee": "no",
+        "lanes": "0",
+        "leisure": "slipway",
+        "surface": "sand"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.6573947,
+          47.5937389
+        ]
+      },
+      "id": "node/6704303324"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/6713638519",
         "leisure": "slipway",
         "name": "Mongold Boat Ramp"
@@ -9900,6 +11957,36 @@
         ]
       },
       "id": "node/6797670819"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6800647482",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.6876644,
+          45.3700212
+        ]
+      },
+      "id": "node/6800647482"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6800835682",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3927956,
+          47.6673905
+        ]
+      },
+      "id": "node/6800835682"
     },
     {
       "type": "Feature",
@@ -10039,6 +12126,21 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/6897169663",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2617811,
+          47.687789
+        ]
+      },
+      "id": "node/6897169663"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/6913895400",
         "leisure": "slipway",
         "surface": "gravel"
@@ -10066,6 +12168,21 @@
         ]
       },
       "id": "node/6986081421"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7007104308",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.4322149,
+          47.6600068
+        ]
+      },
+      "id": "node/7007104308"
     },
     {
       "type": "Feature",
@@ -10281,6 +12398,23 @@
         ]
       },
       "id": "node/7127069571"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7127684642",
+        "leisure": "slipway",
+        "name": "Taylor Landing Boat Launch",
+        "operator": "Washington Department of Fish and Wildlife"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9868392,
+          47.7453919
+        ]
+      },
+      "id": "node/7127684642"
     },
     {
       "type": "Feature",
@@ -10787,6 +12921,25 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/7184535091",
+        "leisure": "slipway",
+        "name": "Blue Lake Boat Launch",
+        "operator": "Washington Department of Fish and Wildlife",
+        "surface": "concrete",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30109"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.4520524,
+          47.5597749
+        ]
+      },
+      "id": "node/7184535091"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/7185163892",
         "leisure": "slipway",
         "name": "Caliche Lakes Boat Launch",
@@ -11068,6 +13221,82 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/7190112799",
+        "leisure": "slipway",
+        "name": "Million Dollar Mile North",
+        "operator": "Washington Department of Fish and Wildlife",
+        "surface": "unpaved",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30161"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.225454,
+          47.755445
+        ]
+      },
+      "id": "node/7190112799"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7196729118",
+        "leisure": "slipway",
+        "name": "Jameson Lake",
+        "operator": "Washington Department of Fish and Wildlife",
+        "surface": "unpaved",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30077"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.6257322,
+          47.6766145
+        ]
+      },
+      "id": "node/7196729118"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7196729123",
+        "leisure": "slipway",
+        "name": "Jameson Lake",
+        "operator": "Washington Department of Fish and Wildlife",
+        "surface": "concrete",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30077"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.6286338,
+          47.6765155
+        ]
+      },
+      "id": "node/7196729123"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7196729124",
+        "leisure": "slipway",
+        "name": "Jameson Lake",
+        "operator": "Washington Department of Fish and Wildlife",
+        "surface": "concrete",
+        "website": "https://wdfw.wa.gov/places-to-go/water-access-sites/30077"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.6297716,
+          47.6763733
+        ]
+      },
+      "id": "node/7196729124"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/7211075601",
         "leisure": "slipway"
       },
@@ -11109,6 +13338,21 @@
         ]
       },
       "id": "node/7226785297"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7257375244",
+        "leisure": "slipway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9167213,
+          47.6970456
+        ]
+      },
+      "id": "node/7257375244"
     },
     {
       "type": "Feature",
@@ -11453,6 +13697,24 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/7607031437",
+        "access": "private",
+        "fee": "no",
+        "leisure": "slipway",
+        "surface": "concrete"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.9371333,
+          47.6413135
+        ]
+      },
+      "id": "node/7607031437"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/7624253954",
         "leisure": "slipway"
       },
@@ -11542,6 +13804,77 @@
         ]
       },
       "id": "node/7771340855"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7776209285",
+        "access": "yes",
+        "leisure": "slipway",
+        "name": "Wassabi Dock",
+        "surface": "metal_grid",
+        "vehicle": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.667874,
+          45.511134
+        ]
+      },
+      "id": "node/7776209285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7778278068",
+        "leisure": "slipway",
+        "name": "Cedar Oak Boat Ramp",
+        "surface": "asphalt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6287702,
+          45.3907718
+        ]
+      },
+      "id": "node/7778278068"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7778297273",
+        "leisure": "slipway",
+        "name": "George Rogers Park",
+        "surface": "paved",
+        "vehicle": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6600133,
+          45.4103824
+        ]
+      },
+      "id": "node/7778297273"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7778430970",
+        "leisure": "slipway",
+        "name": "Dahl Beach",
+        "vehicle": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.6073735,
+          45.3729966
+        ]
+      },
+      "id": "node/7778430970"
     }
   ]
 }
