@@ -292,8 +292,8 @@ map.on('load', function() {
             // launchRampType = props.RAMPTYPE,
             // launchUseFee = props.USEFEE,
             // launchURL = props.FACILURL;
-            var osmNode  = e.features[0].properties['@id'];
-            var description = (launchName) ? '<h2>' + launchName + '</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/' + osmNode + '">Suggest edit</a>' : '<h2>Needs name in OSM</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/">Suggest edit</a>';
+            var osmNode  = props['@id'];
+            var description = (launchName) ? '<h2>' + launchName + '</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/' + osmNode + '">Suggest edit</a>' : '<h2>Needs name in OSM</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/' + osmNode + '">Suggest edit</a>';
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
