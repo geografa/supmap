@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "layers": {
+      "osmw-launches": {
+        "source": "mapbox://tileset-source/grafa/osmw-launches",
+        "minzoom": 5,
+        "maxzoom": 11
+      }
+    }
+  }
