@@ -34,6 +34,7 @@ h2 {
 .mapboxgl-popup-content a {
     color: #ffffff;
     line-height: 2em;
+    text-decoration: none;
 }
 .mapboxgl-popup-content h2, p  {
     margin-bottom: 5px;
