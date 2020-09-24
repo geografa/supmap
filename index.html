@@ -194,15 +194,15 @@ map.on('load', function() {
             launchURL = props.FACILURL;
 
             osmNode  = e.features[0].properties['@id'];
-            description = (launchPhoto) ? '<h2>' + launchName + '</h2><img src=" '+ launchPhoto +' " /><br>' +
+            description = (launchURL) ? '<h2>' + launchName + '</h2><img src=" '+ launchPhoto +' " /><br>' +
                               'Facility type: ' + launchFacilType + '<br>' + 
                               'Use fee: ' + launchUseFee + '<br>' + 
-                              '🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a>': 
+                              '🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="' + launchURL + '">🌍Website</a><br>':
                               '<h2>' + launchName + '</h2>' +
                               'Facility type: ' + launchFacilType + '<br>' + 
                               'Ramp type: ' + launchRampType + '<br>' + 
                               'Use fee: ' + launchUseFee + '<br>' + 
-                              '🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="' + launchURL + '">🌍Website</a><br>';
+                              '🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a>';
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
