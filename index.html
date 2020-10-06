@@ -2,11 +2,11 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <meta property="og:url"                content="https://geografa.github.io/suppdx/#6.5/44.268/-119.655" />
+  <meta property="og:url"                content="https://supmap.org/#6.5/44.268/-119.655" />
   <meta property="og:type"               content="place" />
   <meta property="og:title"              content="Boat Ramps in the PNW" />
   <meta property="og:description"        content="Get info on boat ramp locations in the PNW" />
-  <meta property="og:image"              content="https://geografa.github.io/suppdx/img/bestsup.png" />
+  <meta property="og:image"              content="https://supmap.org/img/bestsup.png" />
 <title>PNW Boat Launches</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js"></script>
@@ -34,7 +34,7 @@ type="text/css"
 <div id="globe"><a href="#"><img src="./img/globe.png" alt="zoom to full"></a></div>
 
 <script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2ptYjNtZWxnMDBrdDNwbnVicGJzOWg2NyJ9.9OulyCe3kEqMAXPbx1mKUA';
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2tkb3ZoNzZrMDZyMzMxbGo0YTF3ZHk2ZyJ9.u6m6_Sxxu5ITBuomsTyA3g';
 let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/grafa/ckdhx8rpo01b61ip8o9e8fth3',
@@ -194,7 +194,7 @@ map.on('load', function() {
             launchURL = props.FACILURL;
 
             osmNode  = e.features[0].properties['@id'];
-            description = (launchURL) ? '<h2>' + launchName + '</h2><img src=" '+ launchPhoto +' " /><br>' +
+            description = (launchPhoto) ? '<h2>' + launchName + '</h2><img src=" '+ launchPhoto +'" /><br>' +
                               'Facility type: ' + launchFacilType + '<br>' + 
                               'Use fee: ' + launchUseFee + '<br>' + 
                               '🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="' + launchURL + '">🌍Website</a><br>':
@@ -454,7 +454,6 @@ document.getElementById('globe').addEventListener('click', function() {
     essential: true // this animation is considered essential with respect to prefers-reduced-motion
   });
 });
-
 
 </script>
 
