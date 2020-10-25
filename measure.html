@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Measure distance</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+	body { margin: 0; padding: 0; }
+	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    .calculation-box {
+        height: 75px;
+        width: 150px;
+        position: absolute;
+        bottom: 40px;
+        left: 10px;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 15px;
+        text-align: center;
+    }
+    p {
+        font-family: 'Arial';
+        margin: 0;
+        font-size: 13px;
+    }
+    .distance {font-size: 2em;}
+</style>
+</head>
+<body>
+<script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
+<link
+    rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css"
+    type="text/css"
+/>
+<div id="map"></div>
+<div class="calculation-box">
+    <p>Draw a line using the draw tools.</p>
+    <div id="calculated-distance"></div>
+</div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2ptYjNtZWxnMDBrdDNwbnVicGJzOWg2NyJ9.9OulyCe3kEqMAXPbx1mKUA';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/grafa/cij7ycutv007k8sm4b3r5g06l', //hosted style id
+        center: [-122.67773866653444,45.52245801087795], // starting position
+        zoom: 12 // starting zoom
+    });
+
+    var draw = new MapboxDraw({
+        displayControlsDefault: false,
+        controls: {
+            line_string:true,
+            trash: true
+        }
+    });
+    map.addControl(draw);
+
+    map.on('draw.create', updateDistance);
+    map.on('draw.delete', updateDistance);
+    map.on('draw.update', updateDistance);
+
+    function updateDistance(e) {
+        var data = draw.getAll();
+        var answer = document.getElementById('calculated-distance');
+        if (data.features.length > 0) {
+            var distance = turf.length(data);
+            // restrict to area to 2 decimal points
+            var distance = Math.round(distance * 100) / 100;
+            answer.innerHTML =
+                '<p class="distance"><strong>' +
+                distance +
+                ' km</strong></p>';
+        } else {
+            answer.innerHTML = '';
+            if (e.type !== 'draw.delete')
+                alert('Use the draw tools to draw a line!');
+        }
+    }
+</script>
+</body>
+</html>
