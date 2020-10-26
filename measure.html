@@ -73,7 +73,7 @@
             answer.innerHTML =
                 '<p class="distance"><strong>' +
                 distance +
-                ' km</strong></p>';
+                ' km</strong></p><p>'+ (distance * 0.621).toFixed(2)  +' mi</p>';
         } else {
             answer.innerHTML = '';
             if (e.type !== 'draw.delete')
