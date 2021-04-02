@@ -195,10 +195,10 @@ var config = {
             staticMap: true,
             description: 'Scappoose was a treat this summer. The Bay has ample parking and Next Adventure is right there if you\'ve forgotten something like, oh...your board. Like Smith & Bybee, be sure to track where you\'re going because it can get a little maze-y out there.',
             location: {
-                center: [-122.81991, 45.81296],
-                zoom: 12.70,
+                center: [-122.83608, 45.82762],
+                zoom: 13.90,
                 pitch: 60.00,
-                bearing: 160.00
+                bearing: 175.20
             },
             onChapterEnter: [],
             onChapterExit: []
