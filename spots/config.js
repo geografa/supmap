@@ -14,7 +14,7 @@ var config = {
             title: 'Let\'s Go!',
             image: './images/spots/ross-island-2.jpg',
             staticMap: false,
-            description: 'New to SUP? Or maybe tired of the same old paddling spots? Here\'s a biased guide of places to SUP that are within an hour or so from Portland, Oregon USA. Just scroll down to see some fine paddling places in and around the City of Roses. <img src="./images/spots/suppmap.gif">If you want more map detail and directions, just click the map 👉 ',
+            description: 'New to SUP? Or maybe tired of the same old paddling spots? Here\'s a biased guide of places to SUP that are within an hour or so from Portland, Oregon USA. These are mainly my opinions and experience so your mileage may vary. Always paddle at your own risk, always wear a PFD & leash, and check conditions before you head out. <p>Just keep scrolling down to see some fine paddling places in and around the City of Roses. <img src="./images/spots/suppmap.gif"></p>If you want more map detail and directions, just click the map 👉 ',
             location: {
                 center: [-122.66440, 45.47991],
                 zoom: 9.68,
@@ -144,17 +144,17 @@ var config = {
             onChapterExit: []
         },
         {
-            id: 'id-hood-river',
-            title: '7. Hood River',
-            image: './images/spots/hood-river.jpg',
+            id: 'id-willamette-falls',
+            title: '7. Willamette Falls',
+            image: './images/spots/willamette-falls-2.jpg',
             staticMap: true,
-            description: 'Hood River is next level. Known around the world as one of the windsurfing and kiteboarding capitals of the world, it\'s also one of the best places for downwinding SUP. Not that I\'ve tried it but that\'s a goal for sure. For something a little more mellow and when winds are light, you can park at the Hook on the east side and then make your way around Wells Island. The shallows can catch your fin and there are still lots of pilings just below the water level to watch for.',
+            description: 'Just south of Portland in the heart of Oregon City lie the dramatic views of Willamette Falls. While it\'s lined by derelict buildings ready for the next zombie film, the area is slated for a mix-use development by the <a href="https://pamplinmedia.com/pt/9-news/502927-403018-grand-ronde-plans-mixed-use-development-at-willamette-falls">Confederated Tribes of Grand Ronde</a>. As exciting as that news is, it\'s still a treat to get that close to the falls and hear its roar. <img src="./images/spots/willamette-falls-1.jpg">Careful of the swirlies and faster-than-you-think-current. Put in at Jon Storm Park under the I-205 bridge just off McLoughlin and head south to the mills.',
             location: {
-                center: [-121.52354, 45.71452],
-                zoom: 12.5,
-                pitch: 0.00,
-                bearing: -2.27
-            },
+                center: [-122.61548, 45.35443],
+                zoom: 14.59,
+                pitch: 43.00,
+                bearing: 0.00
+        },
             onChapterEnter: [],
             onChapterExit: []
         },
@@ -163,7 +163,7 @@ var config = {
             title: '8. Smith & Bybee',
             image: './images/spots/s&b.jpg',
             staticMap: true,
-            description: 'Winter time paddling at Smith & Bybee Lakes is a must for birders and nutria spotters. The grasses and underwater shrubbery are way to thick in the spring and summer when Metro drains it to swamp status but the winter levels are great for quick tour. The shrubs and trees above the water will make a maze-like setting so be sure you make a plan and know how to get back before you head out. S&B is tucked in the industrial part of North Portland just off Marine Drive. Park at the kayak and canoe launch and watch for bikers on the trail. <video width="100%" controls><source src="./images/spots/s&b.mp4" type="video/mp4">Your browser does not support the video tag.</video>',
+            description: 'Winter time paddling at Smith & Bybee Lakes is a must for birders and nutria spotters. The grasses and underwater shrubbery are way too thick in the spring and summer when Metro drains it to swamp status but the winter levels are great for quick tour. The shrubs and trees above the water will make a maze-like setting so be sure you make a plan and know how to get back before you head out. S&B is tucked in the industrial part of North Portland just off Marine Drive. Park at the kayak and canoe launch and watch for bikers on the trail. <video width="100%" controls><source src="./images/spots/s&b.mp4" type="video/mp4">Your browser does not support the video tag.</video>',
             location: {
                 center: [-122.71857, 45.61553],
                 zoom: 14,
