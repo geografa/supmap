@@ -7,7 +7,7 @@ var config = {
     title: 'Best Portland SUP Spots',
     subtitle: 'A short guide to great paddle places within one hour of Portland, Oregon',
     byline: 'by Rafa Gutierrez',
-    footer: 'Source: Rafa Gutierrez, newb paddler, Portland OR. Opinions my own. Always wear a PFD, leash, and something fabulous. Copyright © 2021.',
+    footer: 'Source: Rafa Gutierrez, newb paddler, Portland OR. Opinions my own. Always wear a PFD, leash, and something fabulous. Like the content? Help me <a href="https://www.buymeacoffee.com/supr">buy my son\'s next board!</a>. Copyright © 2021.',
     chapters: [
         {
             id: 'id-start',
