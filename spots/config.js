@@ -12,7 +12,7 @@ var config = {
         {
             id: 'id-start',
             title: 'Let\'s Go!',
-            image: './images/spots/ross-island-2.jpg',
+            image: './images/spots/lets-go.jpg',
             staticMap: false,
             description: 'New to SUP? Or maybe tired of the same old paddling spots? Here\'s a biased guide of places to SUP that are within an hour or so from Portland, Oregon USA. These are mainly my opinions and experience so your mileage may vary. Always paddle at your own risk, always wear a PFD & leash, and check conditions before you head out. <p>Just keep scrolling down to see some fine paddling places in and around the City of Roses. <img src="./images/spots/suppmap.gif"></p>If you want more map detail and directions, just click the map 👉 ',
             location: {
@@ -36,7 +36,7 @@ var config = {
         {
             id: 'id-ri',
             title: '1. Ross Island',
-            image: './images/spots/ross-island.jpg',
+            image: './images/spots/ross-island-1.jpg',
             staticMap: true,
             description: 'If you\'re in Portland proper, then Ross Island is a must-visit. Getting to Ross Island is pretty straightforward and very accessible from either Willamette Park or Sellwood Riverfront Park. There\'s lots of beach along Sellwood that you can hug for a while and if you\'re adventurous you can make it to the southern tip of Ross Island (aka "Newb Beach"). <img src="./images/spots/ross-island-3.jpg">Experienced paddlers will loop around the island for the 6 to 7 km trip or just hang out in the lagoon. This area gets really busy in the summer and lots of boats and jet skis will pass by. Be sure to stay out of the middle of the river and closer to shore (but watch out for remnant pilings as they will catch your fin and you\'ll be taking a dip).',
             location: {
@@ -61,9 +61,9 @@ var config = {
         {
             id: 'id-merwin',
             title: '2. Merwin Lake (Yale Bridge)',
-            image: './images/spots/merwin-2.jpg',
+            image: './images/spots/merwin-solo.jpg',
             staticMap: true,
-            description: 'Merwin is fave spot of mine. Just one hour away from Portland, you\'ll find yourself in a lush PNW forest, replete with fuzzy ferns and forest fairies. The parking is sparse at Yale Bridge so get there early. The staircase down to the launch is long and steep, guaranteed to scuff your board. <img src="./images/spots/merwin.jpg">But once you\'re in, it\'s a smooth ride to the picturesque cascades awaiting your IG stories. And there\'s a rope swing under the bridge for the swinger in you.',
+            description: 'Merwin is fave spot of mine. Just one hour away from Portland, you\'ll find yourself in a lush PNW forest, replete with fuzzy ferns and forest fairies. The parking is sparse at Yale Bridge so get there early. The staircase down to the launch is long and steep, guaranteed to scuff your board. <img src="./images/spots/merwin.jpg">But once you\'re in, it\'s a smooth ride to the picturesque cascades awaiting your IG stories. <img src="./images/spots/merwin-2.jpg">And there\'s a rope swing under the bridge for the swinger in you.',
             location: {
                 center: [-122.37150, 45.96015],
                 zoom: 14.08,
