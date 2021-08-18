@@ -32,7 +32,7 @@ h2 {
     background: rgba(0, 30, 84, 0.78);
 }
 .mapboxgl-popup-content img {
-    background-color: rgba(255, 255, 255, 0.78);
+    background-color: rgba(255, 255, 255, 1);
 }
 .mapboxgl-popup-content a {
     color: #ffffff;
