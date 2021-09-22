@@ -43,7 +43,7 @@ body { margin: 0; padding: 0; }
         // Start downloading the route data, and wait for map load to occur in parallel
         const [rafaRouteGeojson] = await Promise.all([
             fetch(
-                '../geojson/rafa.geojson'
+                '../../geojson/rafa.geojson'
             ).then((response) => response.json()),
             map.once('load')
         ]);
@@ -51,7 +51,7 @@ body { margin: 0; padding: 0; }
         // Start downloading the route data, and wait for map load to occur in parallel
         const [evanRouteGeojson] = await Promise.all([
             fetch(
-                '../geojson/evan.geojson'
+                '../../geojson/evan.geojson'
             ).then((response) => response.json()),
             // map.once('load')
         ]);
