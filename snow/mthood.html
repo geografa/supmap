@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Zoom to 🏂</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+#fly {
+        display: block;
+        position: relative;
+        margin: 0px auto;
+        width: 10%;
+        height: 40px;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        font-size: 12px;
+        text-align: center;
+        color: #fff;
+        background: #e13fce;
+    }
+</style>
+
+</head>
+<body>
+<div id="map"></div>
+<br>
+<button id="fly">Go!</button>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2ptYjNtZWxnMDBrdDNwbnVicGJzOWg2NyJ9.9OulyCe3kEqMAXPbx1mKUA';
+  const start = [-121.71215, 45.32787];
+  const end = [-121.66605, 45.33354];
+  const map = new mapboxgl.Map({
+        container: 'map',
+        zoom: 10,
+        center: start,
+        pitch: 80,
+        bearing: 24.8,
+        style: 'mapbox://styles/grafa/cky0oqe5003cy15nzgeeld25j'
+    });
+
+    map.on('load', () => {
+        map.addLayer({
+            'id': 'sky',
+            'type': 'sky',
+            'paint': {
+                // set up the sky layer to use a color gradient
+                'sky-type': 'gradient',
+                // the sky will be lightest in the center and get darker moving radially outward
+                // this simulates the look of the sun just below the horizon
+                'sky-gradient': [
+                    'interpolate',
+                    ['linear'],
+                    ['sky-radial-progress'],
+                    0.8,
+                    'rgba(135, 206, 235, 1.0)',
+                    1,
+                    'rgba(0,0,0,0.1)'
+                ],
+                'sky-gradient-center': [0, 0],
+                'sky-gradient-radius': 90,
+                'sky-opacity': [
+                    'interpolate',
+                    ['exponential', 0.1],
+                    ['zoom'],
+                    5,
+                    0,
+                    22,
+                    1
+                ]
+            }
+        });
+    });
+    let isAtStart = true;
+
+document.getElementById('fly').addEventListener('click', () => {
+    // depending on whether we're currently at point a or b, aim for
+    // point a or b
+    const target = isAtStart ? end : start;
+
+    // and now we're at the opposite point
+    isAtStart = !isAtStart;
+
+    map.flyTo({
+        // These options control the ending camera position: centered at
+        // the target, at zoom level 9, and north up.
+        center: target,
+        zoom: 16,
+        bearing: -28,
+
+        // These options control the flight curve, making it move
+        // slowly and zoom out almost completely before starting
+        // to pan.
+        speed: 0.2, // make the flying slow
+        curve: 1, // change the speed at which it zooms out
+
+        // This can be any easing function: it takes a number between
+        // 0 and 1 and returns another number between 0 and 1.
+        easing: (t) => t,
+
+        // this animation is considered essential with respect to prefers-reduced-motion
+        essential: true
+    });
+});
+</script>
+
+</body>
+</html>
