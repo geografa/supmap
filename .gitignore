@@ -4,6 +4,4 @@ announce.md
 /downloads
 /routes
 _site/
-.jekyll-catch
-.gitignore
-
+.jekyll-cache/
