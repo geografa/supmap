@@ -13,7 +13,7 @@ async function getWeather() {
     fTemp.innerHTML = parseFloat(tData.value)*9/5+32;
 
   const wQuery = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=Portland,US&APPID=63cb903c39551c9117b8fbbb82699d36`,
+      `https://api.openweathermap.org/data/2.5/weather?q=Portland,US&APPID=63cb903c39551c9117b8fbbb82699d36`,
       { method: 'GET' }
     );
     const wData = await wQuery.json();
