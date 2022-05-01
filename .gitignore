@@ -3,3 +3,7 @@ announce.md
 /gpx
 /downloads
 /routes
+_sites
+.jekyll-catch
+.gitignore
+
