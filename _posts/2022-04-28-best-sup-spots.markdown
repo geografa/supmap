@@ -9,7 +9,7 @@ tags: [Oregon, Washington, map]
 ---
 
 ## Let's Gooooo!!
-New to SUP? Or maybe tired of the same old paddling spots? Here's a biased guide of places to SUP that are within an hour or so from Portland, Oregon USA. There's also an interactive guide if you feel like zooming around to these place on a map [here]({{site.baseurl}}/spots/). These are mainly my opinions and experience so your mileage may vary. As always, paddle at your own risk, always wear a PFD & leash, and check conditions before you head out.
+New to SUP? Or maybe tired of the same old paddling spots? Here's a biased guide of places to SUP that are within an hour or so from Portland, Oregon USA. There's also an **[interactive map]({{site.baseurl}}/spots/)** if you feel like zooming around to get some geographic context. These are mainly my opinions and experience so your mileage may vary. As always, paddle at your own risk, always wear a PFD & leash, and check conditions before you head out.
 
 
 ## 1. Ross Island
