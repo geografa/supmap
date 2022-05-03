@@ -34,10 +34,10 @@ body { margin: 0; padding: 0; }
     (async () => {
         const map = new mapboxgl.Map({
             container: 'map',
-            zoom: 14,
-            center: [-122.660952,45.41115],
+            zoom: 13,
+            center: [-122.6444047815275,45.40038194549791],
             pitch: 75,
-            bearing: 0,
+            bearing: -90,
             style: 'mapbox://styles/mapbox/satellite-streets-v11',
             interactive: true,
             hash: false
@@ -160,7 +160,7 @@ body { margin: 0; padding: 0; }
             ]);
 
             // Rotate the camera at a slightly lower speed to give some parallax effect in the background
-            const rotation = 0 - animationPhase * 140.0;
+            const rotation = -90 - animationPhase * 140.0;
             const newPitch = 75 - animationPhase * 40.0;
 
             map.setBearing(rotation % 360);
