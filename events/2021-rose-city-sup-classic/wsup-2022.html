@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SUP Classic Race replays</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+<div id="map"></div>
+
+<!-- if I use gpx down the road  -->
+<!-- <script type="module">
+    import { gpx } from "https://unpkg.com/@tmcw/togeojson?module";
+  
+    fetch("sample.gpx")
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (xml) {
+        console.log(gpx(new DOMParser().parseFromString(xml, "text/xml")));
+      });
+</script> -->
+  
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2ptYjNtZWxnMDBrdDNwbnVicGJzOWg2NyJ9.9OulyCe3kEqMAXPbx1mKUA';
+    (async () => {
+        const map = new mapboxgl.Map({
+            container: 'map',
+            zoom: 14,
+            center: [-122.660952,45.41115],
+            pitch: 75,
+            bearing: 0,
+            style: 'mapbox://styles/mapbox/satellite-streets-v11',
+            interactive: true,
+            hash: false
+        });
+
+
+        // Start downloading the route data, and wait for map load to occur in parallel
+        const [evanRouteGeojson] = await Promise.all([
+            fetch(
+                '../../geojson/evan-wsup-2022.geojson'
+            ).then((response) => response.json()),
+            // map.once('load')
+        ]);
+
+        const evanRoute = evanRouteGeojson.features[0].geometry.coordinates;
+        const evanPopup = new mapboxgl.Popup({ closeButton: false });
+        const evanMarker = new mapboxgl.Marker({
+            color: '#0099ff',
+            scale: 0.8,
+            draggable: false,
+            pitchAlignment: 'auto',
+            rotationAlignment: 'auto'
+        })
+            .setLngLat(evanRoute[0])
+            .setPopup(evanPopup)
+            .addTo(map)
+            .togglePopup();
+
+        // Add a line feature and layer. This feature will get updated as we progress the animation
+
+        map.addSource('evan-line', {
+            type: 'geojson',
+            // Line metrics is required to use the 'line-progress' property
+            lineMetrics: true,
+            data: evanRouteGeojson
+        });
+        map.addLayer({  
+            type: 'line',
+            source: 'evan-line',
+            id: 'evan-line',
+            paint: {
+                'line-color': 'rgba(0,0,0,0)',
+                'line-width': 5
+            },
+            layout: {
+                'line-cap': 'round',
+                'line-join': 'round'
+            }
+        });
+
+        // Add some fog in the background
+        map.setFog({
+            'range': [-0.5, 2],
+            'color': 'white',
+            'horizon-blend': 0.2
+        });
+
+        // Add a sky layer over the horizon
+        map.addLayer({
+            'id': 'sky',
+            'type': 'sky',
+            'paint': {
+                'sky-type': 'atmosphere',
+                'sky-atmosphere-color': 'rgba(85, 151, 210, 0.5)'
+            }
+        });
+
+        // Add terrain source, with slight exaggeration
+        map.addSource('mapbox-dem', {
+            'type': 'raster-dem',
+            'url': 'mapbox://mapbox.terrain-rgb',
+            'tileSize': 512,
+            'maxzoom': 14
+        });
+        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+        await map.once('idle');
+        // The total animation duration, in milliseconds
+        const animationDuration = 40000;
+        
+        // Use the https://turfjs.org/ library to calculate line distances and
+        // sample the line at a given percentage with the turf.along function.
+        const evanPath = turf.lineString(evanRoute);
+        // Get the total line distance
+        const evanPathDistance = turf.lineDistance(evanPath);
+        let start;
+        function frame(time) {
+            if (!start) start = time;
+            const animationPhase = (time - start) / animationDuration;
+            if (animationPhase > 1) {
+                return;
+            }
+
+            // Get the new latitude and longitude by sampling along the path
+            const evanAlongPath = turf.along(evanPath, evanPathDistance * animationPhase)
+                .geometry.coordinates;
+            const evanLngLat = {
+                lng: evanAlongPath[0],
+                lat: evanAlongPath[1]
+            };
+            // Sample the terrain elevation. We round to an integer value to
+            // prevent showing a lot of digits during the animation
+            const elevation = Math.floor(
+                // Do not use terrain exaggeration to get actual meter values
+                map.queryTerrainElevation(evanLngLat, { exaggerated: false })
+            );
+
+            // Update the popup altitude value and marker location
+            evanPopup.setHTML('evan<br/>');
+            evanMarker.setLngLat(evanLngLat);
+
+            // Reduce the visible length of the line by using a line-gradient to cutoff the line
+            // animationPhase is a value between 0 and 1 that reprents the progress of the animation
+            map.setPaintProperty('evan-line', 'line-gradient', [
+                'step',
+                ['line-progress'],
+                '#0099ff',
+                animationPhase,
+                'rgba(0, 255, 0, 0)'
+            ]);
+
+            // Rotate the camera at a slightly lower speed to give some parallax effect in the background
+            const rotation = 0 - animationPhase * 140.0;
+            const newPitch = 75 - animationPhase * 40.0;
+
+            map.setBearing(rotation % 360);
+            map.setPitch(newPitch % 360);
+
+            window.requestAnimationFrame(frame);
+        }
+
+        window.requestAnimationFrame(frame);
+    })();
+    
+</script>
+
+</body>
+</html>
