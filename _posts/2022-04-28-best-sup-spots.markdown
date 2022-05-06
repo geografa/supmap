@@ -57,7 +57,10 @@ Vancouver Lake is probably one of the best paddles for beginners (and kids!). Wh
 ![Hagg Lake]({{site.baseurl}}/assets/img/hagg-lake.jpeg)
 
 Hagg is fun. Hagg is muddy. But Hagg is also really chill even for the kiddos. 
- Park at Boat Launch C and head north in the no-wake zone to explore the tributaries.
+
+![Hagg Lake kids]({{site.baseurl}}/assets/img/hagg-sup.gif)
+
+Park at Boat Launch C and head north in the no-wake zone to explore the tributaries.
 
 <!-- ![Hagg Lake Movie]({{site.baseurl}}/assets/img/hagg.mp4) -->
 
