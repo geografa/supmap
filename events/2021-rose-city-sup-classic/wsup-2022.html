@@ -15,19 +15,6 @@ body { margin: 0; padding: 0; }
 <body>
 <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 <div id="map"></div>
-
-<!-- if I use gpx down the road  -->
-<!-- <script type="module">
-    import { gpx } from "https://unpkg.com/@tmcw/togeojson?module";
-  
-    fetch("sample.gpx")
-      .then(function (response) {
-        return response.text();
-      })
-      .then(function (xml) {
-        console.log(gpx(new DOMParser().parseFromString(xml, "text/xml")));
-      });
-</script> -->
   
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2ptYjNtZWxnMDBrdDNwbnVicGJzOWg2NyJ9.9OulyCe3kEqMAXPbx1mKUA';
