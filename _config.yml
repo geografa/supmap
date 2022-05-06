@@ -11,7 +11,7 @@ site-twitter: #if your site has a twitter account, enter it here
 # Author Settings
 author: SUPmap.org # add your name
 author-img: logo.png # add your photo
-about-author: Best places to SUP around Portland # add description
+about-author: # add description
 social-twitter: geografa # add your Twitter handle
 social-facebook: rafa-gutierrez # add your Facebook handle
 social-github: geografa # add your Github handle
