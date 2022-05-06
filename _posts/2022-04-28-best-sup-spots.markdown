@@ -87,3 +87,4 @@ Another Washington favorite is Lacamas Lake. Long and lush, you can get a decent
 
 Scappoose was a treat this summer. The Bay has ample parking and Next Adventure is right there if you've forgotten something like, oh...your board. Like Smith & Bybee, be sure to track where you're going because it can get a little maze-y out there.
 
+Have any other faves? Shoot me a line and we'll add it here.
