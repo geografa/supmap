@@ -2,20 +2,8 @@ h2 {
     margin: 0em;
 }
 #globe {
-    display: block;
     position: absolute;
-    margin: 0px 0px;
-    left: 0;
-    top: 11px;
-    /* width: 1%; */
-    height: 20px;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    font-size: 12px;
-    text-align: center;
-    color: rgb(0, 0, 0);
-    background: #ffffff;
+    margin: 10px;
 }
 
 .mapboxgl-popup {
