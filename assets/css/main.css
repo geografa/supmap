@@ -1512,6 +1512,7 @@ a.newer-posts:hover {
   }
   .post .post-content .post-title {
     margin: 0 0 5px;
+    line-height: 1em;
   }
   .post .post-content .post-title a {
     font-size: 1em;

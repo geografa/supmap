@@ -10,8 +10,8 @@
 <title>PNW Boat Launches</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet' />
 
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
 <link
@@ -19,6 +19,8 @@ rel="stylesheet"
 href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
 type="text/css"
 />
+
+
 <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
@@ -46,8 +48,6 @@ let map = new mapboxgl.Map({
 }).addControl(new mapboxgl.AttributionControl({
   customAttribution: '<a href="https://www.oregon.gov/OSMB/Pages/index.aspx">OSMB</a>'}));
 
-
-
 // add geocoder
 map.addControl(
     new MapboxGeocoder({
@@ -58,6 +58,9 @@ map.addControl(
         placeholder: "e.g Willamette Park"
     })
 );
+
+// add nav controls
+map.addControl(new mapboxgl.NavigationControl());
 
 // Add geolocate control to the map.
 map.addControl(new mapboxgl.GeolocateControl({
@@ -86,6 +89,7 @@ function forwardGeocoder(query) {
         matchingFeatures.push(feature);
       }
     }
+    console.log(matchingFeatures);
     return matchingFeatures;
   }
 };
@@ -270,7 +274,7 @@ map.on('load', function() {
             // launchUseFee = props.USEFEE,
             // launchURL = props.FACILURL;
             var osmNode  = e.features[0].properties['@id'];
-            var description = (launchName) ? '<h2>' + launchName + '</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/' + osmNode + '">Suggest edit</a>' : '<h2>Needs name in OSM</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/">Suggest edit</a>';
+            var description = (launchName) ? '<h2>' + launchName + '</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/' + osmNode + '" target="_blank">Suggest edit</a>' : '🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/" target="_blank">Suggest edit</a>';
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -303,7 +307,7 @@ map.on('load', function() {
             // launchUseFee = props.USEFEE,
             // launchURL = props.FACILURL;
             var osmNode  = props['@id'];
-            var description = (launchName) ? '<h2>' + launchName + '</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/' + osmNode + '">Suggest edit</a>' : '<h2>Needs name in OSM</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/' + osmNode + '">Suggest edit</a>';
+            var description = (launchName) ? '<h2>' + launchName + '</h2>🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/' + osmNode + '" target="_blank">Suggest edit</a>' : '🚗 <a href="javascript:void(0)" onclick="getLocation(getRoute)";return false;>Directions</a> | <a href="https://www.openstreetmap.org/' + osmNode + '" target="_blank">Suggest edit</a>';
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
