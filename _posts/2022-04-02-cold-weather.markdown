@@ -8,7 +8,6 @@ fig-caption: Lake Merwin, WA # Add figcaption (optional)
 tags: [Oregon, Washington, map, cold, weather, gear]
 ---
 
-## Cold weather paddling
 Portland weather is all over the place year-round. SUP folk like to talk a lot about gear and we've scraped some of the most valuable tips, tricks, and gear bits for you here. Let's start with cold weather paddling. Noa Rubin posted a comprehensive gear roundup a while back that holds true every season. Here's her response to "what do people wear when they paddle in cold weather?"
 
 ----
