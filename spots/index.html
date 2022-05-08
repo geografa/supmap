@@ -206,7 +206,7 @@ config.chapters.forEach((record, idx) => {
 
     if (record.staticMap) {
         var staticMap = new Image();  
-        staticMap.src = 'https://api.mapbox.com/styles/v1/grafa/ckdhx8rpo01b61ip8o9e8fth3/static/url-https%3A%2F%2Fgeografa.github.io%2Fsup-spots%2Fimages%2Ficons%2Fdot-dk-blue.png(' + record.location.center + ')/' + record.location.center + ',8/430x300?access_token=pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2ptYjNtZWxnMDBrdDNwbnVicGJzOWg2NyJ9.9OulyCe3kEqMAXPbx1mKUA';
+        staticMap.src = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/url-https%3A%2F%2Fgeografa.github.io%2Fsup-spots%2Fimages%2Ficons%2Fdot-dk-blue.png(' + record.location.center + ')/' + record.location.center + ',8/430x300?access_token=pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2ptYjNtZWxnMDBrdDNwbnVicGJzOWg2NyJ9.9OulyCe3kEqMAXPbx1mKUA';
         chapter.appendChild(staticMap);
     }
 
