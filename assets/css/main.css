@@ -102,6 +102,12 @@ a {
   -webkit-text-decoration-skip: objects;
   /* 2 */
 }
+a:hover {
+  color: #ce887b;
+}
+a:visited {
+  color: #23646a;
+}
 
 /**
  * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
