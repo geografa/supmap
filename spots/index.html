@@ -200,7 +200,7 @@ config.chapters.forEach((record, idx) => {
     
     if (record.description) {
         var story = document.createElement('p');
-        story.innerHTML = record.description + ' <a href="https://supmap.org/#15/' + record.location.center[1] + '/'+ record.location.center[0] + '/0/60" target="_blank">🗺</a>';
+        story.innerHTML = record.description + ' <a href="https://supmap.org/overview/#15/' + record.location.center[1] + '/'+ record.location.center[0] + '/0/60" target="_blank">🗺</a>';
         chapter.appendChild(story);
     }
 
