@@ -58,7 +58,38 @@
         #header, h3 {
             font-family: Arial, Helvetica, 'sans-serif';
         }
-        
+        button {
+            background-color: #1F646A;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: Arial, Helvetica, 'sans-serif';
+            box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
+            margin-top: 10px;
+        }
+        button a {
+            color: #fff;
+            text-decoration: none;
+        }
+        button a:hover {
+            color: #fff;
+            text-decoration: none
+        }
+        button a:visited {
+            color: #fff;
+        }
+        button:hover {
+            transition: background-color 0.7s ease;
+            background-color: #EC6157;
+        }
+        button:active {
+            background-color: #fff;
+        }
+        button:visited {
+            color: #fff;
+        }
         #story h1 {
             font-family: 'Bungee Shade', Arial, Helvetica, sans-serif;
             font-size: 3em;
@@ -145,8 +176,7 @@
 <div id="headerTop">
     <div class="weather">
         Portland 🌤 conditions: <a href="https://or.water.usgs.gov/will_morrison/monitors/will_morrison_t_30.png">Water temp: <span id="cTemp"></span>°C   <span id="fTemp"></span>°F</a>
-        | <a href="https://openweathermap.org/city/5746545">Wind: <span id="wind"></span> mph</a> | <a href="https://player.streamguys.com/allclassical/tilicam/sgplayer/player.php">Live</a> 
-
+        | <a href="https://openweathermap.org/city/5746545">Wind: <span id="wind"></span> mph</a> | <a href="https://player.streamguys.com/allclassical/tilicam/sgplayer/player.php">Live</a> | 
     </div>
 </div>
 <div id="map"></div>
@@ -206,7 +236,7 @@ if (config.title2) {
 
 if (config.subtitle) {
     var subtitleText = document.createElement('p');
-    subtitleText.innerText = config.subtitle;
+    subtitleText.innerHTML = config.subtitle;
     header.appendChild(subtitleText);
 }
 
