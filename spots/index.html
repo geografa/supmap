@@ -15,12 +15,11 @@
     <script src="https://unpkg.com/intersection-observer@0.12.0/intersection-observer.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
     <link href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Shade&display=swap" rel="stylesheet">
-
+    <script src="./weather.js"></script>
     <style>
         body {
             margin:0; 
             padding:0; 
-            font-family: 'Times New Roman', Times, serif;
         }
         a, a:hover, a:visited {
             color: #0071bc;
@@ -32,16 +31,34 @@
             position: fixed;
             z-index: -5;
         }
+        #headerTop {
+            /* margin: 3vh auto;
+            width: 90vw; */
+            color: #fafafa;
+            padding: 1vh;
+            text-align: center;
+            font-family: Arial, Helvetica, 'sans-serif';
+            font-size: 1em;
+            box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
+            background-color: rgba(18, 21, 18, 0.693);
+        }
+        #headerTop a {
+            color: #fafafa;
+            text-decoration: underline;
+        }
         #header {
             /* margin: 3vh auto;
             width: 90vw; */
             padding: 2vh;
             text-align: center;
-        }
-        #header {
-            background: ;
+            font-family: 'Bungee', Arial, Helvetica, 'sans-serif';
             box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
+            color: rgba(255, 255, 255, 0.75)
         }
+        #header, h3 {
+            font-family: Arial, Helvetica, 'sans-serif';
+        }
+        
         #story h1 {
             font-family: 'Bungee Shade', Arial, Helvetica, sans-serif;
             font-size: 3em;
@@ -82,6 +99,12 @@
             color: #444;
             background-color: #fafafa;
         }
+        .hero {
+            color: #444;
+            background-image: url('./images/spots/merwin-solo-cover.jpg');
+            background-size: cover;
+            background-position: center;
+        }
         .yellow {
             color: #444;
             background-color: rgb(242, 212, 16);;
@@ -118,8 +141,14 @@
         }
         </style>
 </head>
-<body>
+<body onload="getWeather()">
+<div id="headerTop">
+    <div class="weather">
+        Portland 🌤 conditions: <a href="https://or.water.usgs.gov/will_morrison/monitors/will_morrison_t_30.png">Water temp: <span id="cTemp"></span>°C   <span id="fTemp"></span>°F</a>
+        | <a href="https://openweathermap.org/city/5746545">Wind: <span id="wind"></span> mph</a> | <a href="https://player.streamguys.com/allclassical/tilicam/sgplayer/player.php">Live</a> 
 
+    </div>
+</div>
 <div id="map"></div>
 <div id="story"></div>
 <script src="./config.js"></script>
@@ -158,14 +187,25 @@ features.setAttribute('id', 'features');
 
 var header = document.createElement('div');
 
+if (config.logo) {
+    var logo = new Image();  
+    logo.src = './images/logo.png';
+    header.appendChild(logo);
+}
 if (config.title) {
     var titleText = document.createElement('h1');
     titleText.innerText = config.title;
     header.appendChild(titleText);
 }
 
+if (config.title2) {
+    var titleText2 = document.createElement('h1');
+    titleText2.innerText = config.title2;
+    header.appendChild(titleText2);
+}
+
 if (config.subtitle) {
-    var subtitleText = document.createElement('h2');
+    var subtitleText = document.createElement('p');
     subtitleText.innerText = config.subtitle;
     header.appendChild(subtitleText);
 }
@@ -177,7 +217,7 @@ if (config.byline) {
 }
 
 if (header.innerText.length > 0) {
-    header.classList.add(config.theme);
+    header.classList.add(config.headerTheme);
     header.setAttribute('id', 'header');
     story.appendChild(header);
 }
@@ -216,7 +256,7 @@ config.chapters.forEach((record, idx) => {
         container.classList.add('active');
     }
 
-    chapter.classList.add(config.theme);
+    chapter.classList.add(config.chapterTheme);
     container.appendChild(chapter);
     features.appendChild(container);
 });
@@ -232,7 +272,7 @@ if (config.footer) {
 }
 
 if (footer.innerText.length > 0) {
-    footer.classList.add(config.theme);
+    footer.classList.add(config.chapterTheme);
     footer.setAttribute('id', 'footer');
     story.appendChild(footer);
 }
