@@ -66,7 +66,7 @@ var config = {
             title: '2. Merwin Lake (Yale Bridge)',
             image: './images/spots/merwin-solo.jpg',
             staticMap: true,
-            description: 'Merwin is fave spot of mine. Just one hour away from Portland, you\'ll find yourself in a lush PNW forest, replete with fuzzy ferns and forest fairies. The parking is sparse at Yale Bridge so get there early. The staircase down to the launch is long and steep, guaranteed to scuff your board. <img src="./images/spots/merwin.jpg">But once you\'re in, it\'s a smooth ride to the picturesque cascades awaiting your IG stories. <img src="./images/spots/merwin-2.jpg">And there\'s a rope swing under the bridge for the swinger in you.',
+            description: 'Merwin is fave spot of mine. Just one hour away from Portland, you\'ll find yourself in a lush PNW forest, replete with fuzzy ferns and forest fairies. The parking is sparse at Yale Bridge so get there early. The staircase down to the launch is long and steep, guaranteed to scuff your board. <img src="./images/spots/merwin.jpg">But once you\'re in, it\'s a smooth ride to the picturesque cascades awaiting your IG stories. <img src="./images/spots/merwin-2.jpg">And there\'s a rope under the bridge for a swingin good time.',
             location: {
                 center: [-122.37150, 45.96015],
                 zoom: 14.08,
