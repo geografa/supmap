@@ -16,7 +16,12 @@ async function getWeather() {
       { method: 'GET' }
     );
     const wData = await wQuery.json();
-    console.log(wData.wind.speed);
+    // console.log(wData.wind.speed);
+    console.log(wData.main.temp);
     let wind = document.getElementById('wind');
       wind.innerHTML = JSON.stringify(Math.round(wData.wind.speed*2.237));
+    let aircTemp = document.getElementById('aircTemp');
+      aircTemp.innerHTML = JSON.stringify(Math.round(wData.main.temp-273.15));
+    let airfTemp = document.getElementById('airfTemp');
+      airfTemp.innerHTML = JSON.stringify(Math.round(wData.main.temp*9/5-459.67));
 }

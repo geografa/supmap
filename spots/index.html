@@ -175,8 +175,8 @@
 <body onload="getWeather()">
 <div id="headerTop">
     <div class="weather">
-        Portland 🌤 conditions: <a href="https://or.water.usgs.gov/will_morrison/monitors/will_morrison_t_30.png">Water temp: <span id="cTemp"></span>°C   <span id="fTemp"></span>°F</a>
-        | <a href="https://openweathermap.org/city/5746545">Wind: <span id="wind"></span> mph</a> | <a href="https://player.streamguys.com/allclassical/tilicam/sgplayer/player.php">Live</a>
+        Portland 🌤 conditions: 🌡️ <span id="airfTemp"></span>°F <span id="aircTemp"></span>°C | 🌊 <span id="cTemp"></span>°C   <span id="fTemp"></span>°F
+        | 💨 <span id="wind"></span> mph | <a href="https://player.streamguys.com/allclassical/tilicam/sgplayer/player.php">Live 📸</a> | <a href="https://www.buymeacoffee.com/supr">Donate 💸</a>
     </div>
 </div>
 <div id="map"></div>
@@ -360,7 +360,6 @@ map.on("load", function() {
         map.flyTo(chapter.location);
         if (config.showMarkers) {
             marker.setLngLat(chapter.location.center);
-            console.log(chapter.location.center);
         }
         if (chapter.onChapterEnter.length > 0) {
             chapter.onChapterEnter.forEach(setLayerOpacity);
