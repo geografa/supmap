@@ -10,7 +10,7 @@ var config = {
     title2: 'of the Pacific NW',
     subtitle: 'Your guide to the great paddle places of Oregon and Southwest WA <br /><button><a href="#id-start">LET\'S GO!</a></button>',
     byline: 'by Rafa Gutierrez',
-    footer: 'Source: Rafa Gutierrez, newb paddler, Portland OR. Opinions my own. Always wear a PFD, leash, and something fabulous. Like the content? <a href="https://www.buymeacoffee.com/supr">You can buy me a bevie ☕️ 🍺</a>. Copyright © 2023.',
+    footer: 'Source: Rafa Gutierrez, Portland OR. Opinions my own. Always wear a PFD, leash, and something fabulous. Like the content? <a href="https://www.buymeacoffee.com/supr">You can buy me a bevie ☕️ 🍺</a>. Copyright © 2023.',
     chapters: [
         {
             id: 'id-start',
