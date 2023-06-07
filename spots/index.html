@@ -55,6 +55,10 @@
             box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
             color: rgba(255, 255, 255, 0.75)
         }
+        #header2 {
+            font-size: 1em;
+        }
+
         #header, h3 {
             font-family: Arial, Helvetica, 'sans-serif';
         }
@@ -164,6 +168,11 @@
             width: 100%;
         }
 
+        .step .anchor a {
+            font-size: 0.5em;
+            text-decoration: none;
+        }
+
         @media (max-width: 750px) {
             #features {
                 width: 90vw;
@@ -229,7 +238,7 @@ if (config.title) {
 }
 
 if (config.title2) {
-    var titleText2 = document.createElement('h1');
+    var titleText2 = document.createElement('h3');
     titleText2.innerText = config.title2;
     header.appendChild(titleText2);
 }
@@ -255,10 +264,11 @@ if (header.innerText.length > 0) {
 config.chapters.forEach((record, idx) => {
     var container = document.createElement('div');
     var chapter = document.createElement('div');
-    
-    if (record.title) {
+
+
+    if (record.title && record.id) {
         var title = document.createElement('h3');
-        title.innerText = record.title;
+        title.innerHTML = record.title + '<span class="anchor"><a href="#' + record.id + '">🔗</a></span>';
         chapter.appendChild(title);
     }
     
