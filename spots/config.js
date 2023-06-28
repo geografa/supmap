@@ -8,7 +8,7 @@ var config = {
     logo: '../assets/img/logo.png',
     title: 'Best SUP Spots',
     title2: 'of the Pacific NW',
-    subtitle: 'Your guide to the great paddle places of Oregon and Southwest WA <br /><button><a href="#id-start">LET\'S GO!</a></button>',
+    subtitle: 'Your guide to the great paddle places of Oregon and Southwest WA <br />',
     byline: 'by Rafa Gutierrez',
     footer: 'Source: Rafa Gutierrez, Portland OR. Opinions my own. Always wear a PFD, leash, and something fabulous. Like the content? <a href="https://www.buymeacoffee.com/supr">You can buy me a bevie ☕️ 🍺</a>. Copyright © 2023.',
     chapters: [
@@ -313,3 +313,10 @@ var config = {
         }
     ]
 };
+
+// if chapters are loaded in config.js, populate dropdown
+if (config) {
+    for (var i = 0; i < config.chapters.length; i++) {
+        document.getElementById("spotSelect").innerHTML += '<option value="' + config.chapters[i].id + '">' + config.chapters[i].title + '</option>';
+    }
+}
