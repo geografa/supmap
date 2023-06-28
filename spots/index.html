@@ -62,6 +62,18 @@
         #header, h3 {
             font-family: Arial, Helvetica, 'sans-serif';
         }
+        #selectSpot {
+            z-index: 1000;
+            position: absolute;
+        }
+        select {
+            font-family: Arial, Helvetica, 'sans-serif';
+            font-size: 1em;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+        }
         button {
             background-color: #1F646A;
             color: #fff;
@@ -187,11 +199,20 @@
         Portland 🌤 conditions: 🌡️ <span id="airfTemp"></span>°F <span id="aircTemp"></span>°C | 🌊 <span id="fTemp"></span>°F
         <span id="cTemp"></span>°C | 💨 <span id="wind"></span> mph | <a href="https://player.streamguys.com/allclassical/tilicam/sgplayer/player.php">Live 📸</a> | <a href="https://www.buymeacoffee.com/supr">Donate 💸</a>
     </div>
+    <select id="spotSelect"></select><button id="goToSpot">GO</button>
 </div>
 <div id="map"></div>
 <div id="story"></div>
+
 <script src="./config.js"></script>
 <script>
+// when a user clicks on a spot in the dropdown, scroll to that spot
+document.getElementById('goToSpot').addEventListener('click', function() {
+    var spot = document.getElementById('spotSelect').value;
+    var spotEl = document.getElementById(spot);
+    spotEl.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+});
+
 var layerTypes = {
     'fill': ['fill-opacity'],
     'line': ['line-opacity'],
