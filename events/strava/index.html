@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add a vector tile source</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<style>
+    </style>
+    <div id="map"></div>
+    <script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2ptYjNtZWxnMDBrdDNwbnVicGJzOWg2NyJ9.9OulyCe3kEqMAXPbx1mKUA';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/dark-v11',
+        zoom: 14.5,
+        pitch: 67,
+        bearing: 51,
+        center: [-122.66134543287632,45.475005930029965]
+    });
+    let currentIndex = 0;
+    let features = [];
+
+    // Add the vector tileset as a source
+    map.on('load', function () {
+        map.addSource('ri-loops-ids-source', {
+            type: 'vector',
+            url: 'mapbox://grafa.ri_loops_ids',
+            promoteId: 'ri_id'
+        });
+        // Add a layer to display the points
+        map.addLayer({
+            id: 'ri-loops-ids-layer-halo',
+            type: 'circle',
+            source: 'ri-loops-ids-source',
+            'source-layer': 'ri_loops_ids',
+            paint: {
+                'circle-radius': [
+                    'case',
+                    ['boolean', ['feature-state', 'isHighlighted'], false],
+                    8,
+                    2
+                ],
+                'circle-color': 'magenta',
+                'circle-blur': [
+                    'case',
+                    ['boolean', ['feature-state', 'isHighlighted'], false],
+                    1,
+                    5
+                ],
+            }
+        });
+        map.addLayer({
+            id: 'ri-loops-ids-layer',
+            type: 'circle',
+            source: 'ri-loops-ids-source',
+            'source-layer': 'ri_loops_ids',
+            paint: {
+                'circle-radius': [
+                    'case',
+                    ['boolean', ['feature-state', 'isHighlighted'], false],
+                    2.5,
+                    1
+                ],
+                'circle-color': 'white',
+                'circle-blur': [
+                    'case',
+                    ['boolean', ['feature-state', 'isHighlighted'], false],
+                    0.5,
+                    3
+                ],
+            }
+        });
+        getFeatures();       
+    });
+    // create an async await function to wait for the source to load then query the source for the features
+    async function getFeatures() {
+        await map.on('sourcedata', function(e) {
+            if (e.isSourceLoaded && e.sourceId === 'ri-loops-ids-source') {
+                features = map.querySourceFeatures('ri-loops-ids-source', {
+                    sourceLayer: 'ri_loops_ids'
+                });
+            };
+            animateFeature();
+        });
+    }
+
+    function animateFeature() {
+        // sort the current features by ri_id
+        features.sort(function(a, b) {
+            return a.properties.ri_id - b.properties.ri_id;
+        });
+        var feature = features[currentIndex];
+
+        // Highlight the feature by updating featureState
+        // Animate the radius of the highlighted feature
+        var startTime = performance.now();
+        function animateRadius(currentTime) {
+            var elapsedTime = currentTime - startTime;
+
+            if (elapsedTime > 1) {
+                map.setFeatureState({ source: 'ri-loops-ids-source', sourceLayer: 'ri_loops_ids', id: feature.properties.ri_id }, { isHighlighted: true });
+                currentIndex++;
+                if (currentIndex < features.length) {
+                    animateFeature(); // Animate the next feature
+                }
+            } else {
+                requestAnimationFrame(animateRadius);
+            }
+        }
+        // remove the features state after 5 seconds
+        function animateRadius2(currentTime) {
+            var elapsedTime = currentTime - startTime;
+
+            if (elapsedTime > 5000) {
+                map.setFeatureState({ source: 'ri-loops-ids-source', sourceLayer: 'ri_loops_ids', id: feature.properties.ri_id }, { isHighlighted: false });
+                currentIndex++;
+                if (currentIndex < features.length) {
+                    animateFeature(); // Animate the next feature
+                }
+            } else {
+                requestAnimationFrame(animateRadius2);
+            }
+        }
+        requestAnimationFrame(animateRadius);
+        requestAnimationFrame(animateRadius2);
+    };
+</script>
+
+</body>
+</html>
