@@ -1,19 +1,425 @@
----
-layout: main
----
-{% for post in paginator.posts %}
-<article class="post">
-  {% if post.img %}
-    <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
-  {% else %}
-  {% endif %}
-  <div class="post-content">
-    <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
-    <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
-    <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
-    <span class="post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
-  </div>
-</article>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SUP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Shade&display=swap"
+      rel="stylesheet"
+    />
 
-{% include pagination.html %}
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <!-- include weather.js -->
+    <script src="./assets/js/weather.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .map {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+      }
+
+      a {
+        color: #404040;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #101010;
+      }
+
+      .title-bar {
+        display: flex;
+        position: absolute;
+        background-color: rgb(35, 100, 106, 0.9);
+        color: #fff;
+        width: 100%;
+        z-index: 1;
+        top: 36px;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      .title-bar .logo {
+        padding: 10px;
+      }
+
+      .title-bar .share {
+        position: fixed;
+        top: 13px;
+        right: 20px;
+      }
+
+      .title-bar h1 {
+        font-family: "Bungee", Arial, Helvetica, sans-serif;
+        font-size: 4em;
+        font-style: italic;
+        font-variation-settings: "wdth" 75;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 20px 2px;
+      }
+      .title-bar h3 {
+        font-family: "Bungee", Arial, Helvetica, sans-serif;
+        font-size: 1.17em;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 10;
+        left: 10px;
+        top: 50%;
+        width: 95%;
+        height: 40%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Modal Content/Box */
+      .modal-content {
+        /* background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        /* padding: 20px;
+        border: 1px solid #888;  */
+        width: 100%; /* Could be more or less, depending on screen size */
+        line-height: 1.25em;
+      }
+      .modal-content img {
+        margin-top: 20px;
+        width: 100%;
+        height: auto;
+        /* round corners */
+        border-radius: 10px;
+        /* add shadow */
+        box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+      }
+
+      /* The Close Button */
+      .close {
+        position: absolute;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        top: 16px;
+        right: 20px;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .poster {
+        /* float: left; */
+        margin-right: 8px;
+        width: 100%;
+        /* round corners */
+        border-radius: 10px;
+        /* add shadow */
+        box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
+      }
+
+      /* banner */
+      .banner {
+        position: absolute;
+        display: flex;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #ec6157;
+        color: #fff;
+        padding: 10px;
+        font-size: 12px;
+        justify-content: center;
+        align-items: baseline;
+        z-index: 5;
+        border-bottom: #c8c7b2 2px solid;
+      }
+
+      .banner a {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      .spot {
+        color: #23646a;
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: none;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #03094d;
+        border-radius: 0;
+      }
+
+      /* Marker tweaks */
+      .mapboxgl-popup {
+        padding-bottom: 60px;
+      }
+
+      .mapboxgl-popup-close-button {
+        display: none;
+      }
+
+      .mapboxgl-popup-content {
+        font: 400 15px/22px "Open Sans", "Helvetica Neue", sans-serif;
+        padding: 0;
+        width: 180px;
+        border-radius: 10px;
+      }
+
+      .mapboxgl-popup-content h3 {
+        background: #050848;
+        color: #fff;
+        margin: 0;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        font-weight: 700;
+        margin-top: -15px;
+      }
+
+      .mapboxgl-popup-content h4 {
+        margin: 0;
+        padding: 10px;
+        font-weight: 400;
+      }
+
+      .mapboxgl-popup-content div {
+        padding: 10px;
+      }
+
+      .mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+        margin-top: 15px;
+      }
+
+      .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+        border-bottom-color: #fff;
+      }
+
+      /* create media queries for mobile */
+      @media (max-width: 600px) {
+        .title-bar {
+          /* add a blurred shadow below */
+          box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.4);
+        }
+        .title-bar .logo {
+          /* padding: 10px 10px; */
+        }
+        .title-bar h1 {
+          font-size: 2.25em;
+          text-align: left;
+          display: inline;
+          padding: 0px;
+        }
+        .title-bar h3 {
+          font-size: 1em;
+          display: inline;
+        }
+        .listings .item {
+          font-size: 0.5em;
+        }
+        .mapboxgl-popup-content h3 {
+          font-size: 1em;
+        }
+        .mapboxgl-popup-content h4 {
+          font-size: 0.8em;
+        }
+        .mapboxgl-popup-content div {
+          font-size: 0.8em;
+        }
+      }
+    </style>
+  </head>
+
+  <body onload="getWeather()">
+    <!-- <div>Portland 🌤 conditions: </div> -->
+    <div class="banner">
+      🌡️ <span id="airfTemp" class="item">79</span>°F &nbsp;
+      <span id="aircTemp" class="item">26</span>°C &nbsp;| 🌊
+      <span id="fTemp" class="item">65</span>°F &nbsp;
+      <span id="cTemp" class="item">19</span>°C | 💨 &nbsp;
+      <span id="wind" class="item">9</span> mph | &nbsp;
+      <a
+        href="https://player.streamguys.com/allclassical/tilicam/sgplayer/player.php"
+        class="item"
+      >
+        Live 📸</a
+      >&nbsp | &nbsp;
+      <a href="https://www.buymeacoffee.com/supr" class="item">Donate 💸</a
+      >&nbsp;
+    </div>
+
+    <div class="title-bar">
+      <div class="logo">
+        <img src="./assets/images/logo.png" alt="SUP" />
+      </div>
+      <h1>best sup spots</h1>
+      <h3>of the pacnw</h3>
+    </div>
+    <div id="myModal" class="modal"></div>
+    <div id="map" class="map"></div>
+    <script>
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2tkb3ZoNzZrMDZyMzMxbGo0YTF3ZHk2ZyJ9.u6m6_Sxxu5ITBuomsTyA3g";
+      const map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/grafa/clvcti9gb00ue01rjhg1n7y5d",
+        center: [-122.6313886135545, 45.635451806547906],
+        zoom: 6.5,
+        hash: true,
+        // cooperativeGestures: true,
+        attributionControl: false,
+      }).addControl(
+        new mapboxgl.AttributionControl({
+          customAttribution:
+            '<a href="https://www.oregon.gov/OSMB/Pages/index.aspx">OSMB</a>',
+        })
+      );
+
+      // write a async function to fetch the supspots.geojson file in the ./geojson folder
+      const getSupSpots = async () => {
+        const response = await fetch("./assets/geojson/supspots.geojson");
+        const data = await response.json();
+        return data;
+      };
+
+      /**
+       * Wait until the map loads to make changes to the map.
+       */
+      map.on("load", async () => {
+        const data = await getSupSpots();
+
+        // add source and layer for spots
+        map.addSource("sup_spots", {
+          type: "geojson",
+          data: data,
+          cluster: true,
+          clusterMaxZoom: 14, // Max zoom to cluster points on
+          clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+          generateId: true,
+        });
+
+        // +++++++++++++ SUP SPOTS +++++++++++++
+        // add the layers for the clusters and unclustered points
+        map.addLayer({
+          id: "spot_clusters",
+          type: "circle",
+          source: "sup_spots",
+          filter: ["all", [">", "point_count", 0]],
+          paint: {
+            "circle-color": "#ec6157",
+            "circle-radius": ["step", ["get", "point_count"], 8, 1, 16, 3, 24],
+            "circle-stroke-width": 2,
+            "circle-stroke-color": "#fff",
+          },
+        });
+        // add the unclustered points layer
+        map.addLayer({
+          id: "spot_unclustered_points",
+          type: "symbol",
+          source: "sup_spots",
+          // create a filter that will hide the clusters and only show the points
+          filter: ["!", ["has", "point_count"]],
+          layout: {
+            "icon-image": "spots",
+            "icon-size": 0.5,
+            "icon-allow-overlap": true,
+          },
+        });
+        // add a label layer for the clusters
+        map.addLayer({
+          id: "spot_cluster_count",
+          type: "symbol",
+          source: "sup_spots",
+          filter: ["has", "point_count"],
+          layout: {
+            "text-field": "{point_count_abbreviated}",
+            "text-font": ["Arial Unicode MS Bold", "DIN Offc Pro Medium"],
+            "text-size": 16,
+          },
+          paint: {
+            "text-color": "#fff",
+          },
+        });
+        // add a listener for the click event on the clusters to expand the cluster and zoom in
+        map.on("click", "spot_clusters", (e) => {
+          const features = map.queryRenderedFeatures(e.point, {
+            layers: ["spot_clusters"],
+          });
+          const clusterId = features[0].properties.cluster_id;
+          map
+            .getSource("sup_spots")
+            .getClusterExpansionZoom(clusterId, (err, zoom) => {
+              if (err) return;
+              map.easeTo({
+                center: features[0].geometry.coordinates,
+                zoom: zoom,
+              });
+            });
+        });
+
+        // add a listener for the click event on the unclustered points to display a popup
+        map.on("click", "spot_unclustered_points", (e) => {
+          const coordinates = e.features[0].geometry.coordinates.slice();
+          const { title, image, description } = e.features[0].properties;
+          const heading = `<h3>${title}</h3>`;
+          const desc = `
+                    <img src='./assets/images/close_dark.svg' class='close' onclick='closeModal()' />
+                    <img src='${image}' class='poster' />
+                    <div class='modal-content' id='desc'>${description}</div>`;
+
+          var modal = document.getElementById("myModal");
+          modal.innerHTML = heading + " " + desc;
+          modal.style.display = "block";
+        });
+      });
+
+      /**
+       * Use Mapbox GL JS's `flyTo` to move the camera smoothly
+       * a given center point.
+       **/
+      function flyToVenue(currentFeature) {
+        map.flyTo({
+          center: currentFeature.geometry.coordinates,
+          zoom: 14,
+          pitch: 60,
+        });
+      }
+      const closeModal = () => {
+        document.querySelector(".modal").style.display = "none";
+      };
+    </script>
+  </body>
+</html>
