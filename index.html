@@ -117,7 +117,11 @@
         /* add shadow */
         box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
       }
-
+      .modal h3 {
+        font-family: "Bungee", sans-serif;
+        color: #23646a;
+        font-size: 2em;
+      }
       /* The Close Button */
       .close {
         position: absolute;
@@ -184,61 +188,14 @@
         border-radius: 0;
       }
 
-      /* Marker tweaks */
-      .mapboxgl-popup {
-        padding-bottom: 60px;
-      }
-
-      .mapboxgl-popup-close-button {
-        display: none;
-      }
-
-      .mapboxgl-popup-content {
-        font: 400 15px/22px "Open Sans", "Helvetica Neue", sans-serif;
-        padding: 0;
-        width: 180px;
-        border-radius: 10px;
-      }
-
-      .mapboxgl-popup-content h3 {
-        background: #050848;
-        color: #fff;
-        margin: 0;
-        padding: 10px;
-        border-radius: 10px 10px 0 0;
-        font-weight: 700;
-        margin-top: -15px;
-      }
-
-      .mapboxgl-popup-content h4 {
-        margin: 0;
-        padding: 10px;
-        font-weight: 400;
-      }
-
-      .mapboxgl-popup-content div {
-        padding: 10px;
-      }
-
-      .mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
-        margin-top: 15px;
-      }
-
-      .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
-        border-bottom-color: #fff;
-      }
-
       /* create media queries for mobile */
       @media (max-width: 600px) {
         .title-bar {
-          /* add a blurred shadow below */
           box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.4);
         }
-        .title-bar .logo {
-          /* padding: 10px 10px; */
-        }
+
         .title-bar h1 {
-          font-size: 2.25em;
+          font-size: 2em;
           text-align: left;
           display: inline;
           padding: 0px;
@@ -246,18 +203,10 @@
         .title-bar h3 {
           font-size: 1em;
           display: inline;
+          font-family: "Bungee", sans-serif;
         }
         .listings .item {
           font-size: 0.5em;
-        }
-        .mapboxgl-popup-content h3 {
-          font-size: 1em;
-        }
-        .mapboxgl-popup-content h4 {
-          font-size: 0.8em;
-        }
-        .mapboxgl-popup-content div {
-          font-size: 0.8em;
         }
       }
     </style>
