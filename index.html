@@ -93,7 +93,7 @@
         height: 70%;
         overflow-y: scroll;
         overflow-x: hidden;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgb(255, 255, 255);
         padding: 20px;
         border-radius: 20px;
         box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
@@ -105,8 +105,11 @@
         margin: 15% auto; /* 15% from the top and centered */
         /* padding: 20px;
         border: 1px solid #888;  */
+        margin-top: 20px;
         width: 100%; /* Could be more or less, depending on screen size */
         line-height: 1.25em;
+        font-size: 0.85em;
+        font-family: "Lato", sans-serif;
       }
       .modal-content img {
         margin-top: 20px;
@@ -175,6 +178,61 @@
         color: #23646a;
       }
 
+      .mapboxgl-popup {
+        max-width: 400px;
+        font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+        padding-bottom: 10px;
+      }
+      .mapboxgl-popup,
+      img {
+        max-width: 100%;
+      }
+      .mapboxgl-popup-content {
+        border-radius: 10px;
+        color: #ffffff;
+        background: #23646a;
+      }
+      .mapboxgl-popup-content img {
+        background-color: rgba(255, 255, 255, 1);
+        /* max-width: 66px; */
+        position: relative;
+        left: 0px;
+        margin: 10px 0px;
+        border: solid 0.5px #e7e0d4;
+        border-radius: 10px;
+      }
+      .mapboxgl-popup-content a {
+        color: #ffffff;
+        line-height: 2em;
+      }
+      .mapboxgl-popup-content h2,
+      p {
+        margin-bottom: 5px;
+      }
+      .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+        border-top-color: #23646a;
+      }
+      .mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+        border-bottom-color: #23646a;
+      }
+      .mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+        border-right-color: #23646a;
+      }
+      .mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+        border-left-color: #23646a;
+      }
+      .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip {
+        border-bottom-color: #23646a;
+      }
+      .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+        border-bottom-color: #23646a;
+      }
+      .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip {
+        border-top-color: #23646a;
+      }
+      .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+        border-top-color: #23646a;
+      }
       ::-webkit-scrollbar {
         display: none;
       }
@@ -244,7 +302,7 @@
         "pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2tkb3ZoNzZrMDZyMzMxbGo0YTF3ZHk2ZyJ9.u6m6_Sxxu5ITBuomsTyA3g";
       const map = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/grafa/clvcti9gb00ue01rjhg1n7y5d",
+        style: "mapbox://styles/grafa/ckdhx8rpo01b61ip8o9e8fth3",
         center: [-122.6313886135545, 45.635451806547906],
         zoom: 6.5,
         hash: true,
@@ -353,6 +411,34 @@
           modal.innerHTML = heading + " " + desc;
           modal.style.display = "block";
         });
+      });
+
+      map.on("click", "osmw-launches", (e) => {
+        // add a popup for the launches layer
+        new mapboxgl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML(
+            "<h3>" +
+              e.features[0].properties.FACILNM +
+              "</h3><p>" +
+              e.features[0].properties.FACILTYPE +
+              "</p>"
+          )
+          .addTo(map);
+        // if the PHOTOURL property exists, add an image to the popup
+        if (e.features[0].properties.PHOTOURL) {
+          document.querySelector(
+            ".mapboxgl-popup-content"
+          ).innerHTML += `<img src='${e.features[0].properties.PHOTOURL}' />`;
+        }
+        // if use fee exists, add it to the popup
+        if (e.features[0].properties.USEFEE) {
+          document.querySelector(
+            ".mapboxgl-popup-content"
+          ).innerHTML += `<p>Use Fee: $ ${e.features[0].properties.USEFEE}</p>`;
+        }
+        // fly to the point
+        flyToVenue(e.features[0]);
       });
 
       /**
