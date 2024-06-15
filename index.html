@@ -460,7 +460,7 @@
         });
       });
 
-      map.on("mouseenter", "osmw-launches", (e) => {
+      map.on("click", "osmw-launches", (e) => {
         // add a popup for the launches layer
         let popup = new mapboxgl.Popup()
           .setLngLat(e.lngLat)
@@ -491,7 +491,7 @@
         });
       });
 
-      map.on("mouseenter", "slipways", (e) => {
+      map.on("click", "slipways", (e) => {
         // add a popup for the launches layer
         // if the name exists in the properties, use that, otherwise use the 'Slipway'
         const name = e.features[0].properties.NAME
