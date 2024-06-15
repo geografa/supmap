@@ -15,7 +15,7 @@
     />
     <meta
       itemprop="image"
-      content="https://supmap.org/assets/images/bestsup.png"
+      content="https://supmap.org/assets/img/bestsup.png"
     />
 
     <!-- Facebook Meta Tags -->
@@ -28,7 +28,7 @@
     />
     <meta
       property="og:image"
-      content="https://supmap.org/assets/images/bestsup.png"
+      content="https://supmap.org/assets/img/bestsup.png"
     />
 
     <!-- Twitter Meta Tags -->
@@ -40,7 +40,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://supmap.org/assets/images/bestsup.png"
+      content="https://supmap.org/assets/img/bestsup.png"
     />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -337,7 +337,7 @@
 
     <div class="title-bar">
       <div class="logo">
-        <img src="./assets/images/logo.png" alt="SUP" />
+        <img src="./assets/img/logo.png" alt="SUP" />
       </div>
       <h1>best sup spots</h1>
       <h3>of the pacnw</h3>
@@ -450,7 +450,7 @@
           const { title, image, description } = e.features[0].properties;
           const heading = `<h3>${title}</h3>`;
           const desc = `
-                    <img src='./assets/images/close_dark.svg' class='close' onclick='closeModal()' />
+                    <img src='./assets/img/close_dark.svg' class='close' onclick='closeModal()' />
                     <img src='${image}' class='poster' />
                     <div class='modal-content' id='desc'>${description}</div>`;
 
@@ -460,9 +460,9 @@
         });
       });
 
-      map.on("click", "osmw-launches", (e) => {
+      map.on("mouseenter", "osmw-launches", (e) => {
         // add a popup for the launches layer
-        new mapboxgl.Popup()
+        let popup = new mapboxgl.Popup()
           .setLngLat(e.lngLat)
           .setHTML(
             "<h3>" +
@@ -477,6 +477,7 @@
           document.querySelector(
             ".mapboxgl-popup-content"
           ).innerHTML += `<img src='${e.features[0].properties.PHOTOURL}' />`;
+          popup.setLngLat(e.lngLat).addTo(map);
         }
         // if use fee exists, add it to the popup
         if (e.features[0].properties.USEFEE) {
@@ -484,21 +485,26 @@
             ".mapboxgl-popup-content"
           ).innerHTML += `<p>Use Fee: ${e.features[0].properties.USEFEE}</p>`;
         }
-        // fly to the point
-        flyToVenue(e.features[0]);
+        map.on("mouseleave", "osmw-launches", () => {
+          map.getCanvas().style.cursor = "";
+          popup.remove();
+        });
       });
-      map.on("click", "slipways", (e) => {
+
+      map.on("mouseenter", "slipways", (e) => {
         // add a popup for the launches layer
         // if the name exists in the properties, use that, otherwise use the 'Slipway'
         const name = e.features[0].properties.NAME
           ? e.features[0].properties.NAME
           : "Slipway";
-        new mapboxgl.Popup()
+        let popup = new mapboxgl.Popup()
           .setLngLat(e.lngLat)
-          .setHTML("<h3>" + name + "</h3>")
+          .setHTML("<h3>Slipway</h3>")
           .addTo(map);
-        // fly to the point
-        flyToVenue(e.features[0]);
+        map.on("mouseleave", "slipways", () => {
+          map.getCanvas().style.cursor = "";
+          popup.remove();
+        });
       });
 
       /**
