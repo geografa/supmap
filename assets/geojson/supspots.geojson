@@ -221,6 +221,19 @@
         "type": "Point",
         "coordinates": [-122.64948, 45.43583]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "id-turner",
+        "title": "Turner Lake",
+        "image": "https://www.cityofturner.org/vertical/Sites/%7B85E5A386-9024-4192-A152-0B30E6890600%7D/uploads/Turner_Lake_Park_Boat_Ramp_2020_Web.jpg",
+        "description": "Turner Lake Park (5203 Holly Street) was deeded to the City of Turner by Crawford Crossing LLC on April 11, 2018. Formerly the Riverbend Quarry, it had filled with ground water over the years, and would now become a park for the greater Turner community. Turn-n-Paddle is renting kayaks and SUP at Turner Lake Park 7 days a week 11-8pm (Dependent on weather conditions) through the end of September. Rentals are $20/hr for Paddle boards and $10/hr for Kayaks. For more information contact 503-983-1126. The boat ramp is now open and electric motors are allowed, with the entire lake a no wake, 5 mph speed limit, 14 Foot length limit. Fishing is allowed from boats or the bank. Park is open dawn to dusk every day unless the gate is closed. <a href='https://www.cityofturner.org/turnerlakepark'>More info 🔗</a>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.95782360924528, 44.85838113973085]
+      }
     }
   ]
 }
