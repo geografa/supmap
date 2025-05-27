@@ -5,11 +5,11 @@ async function getWeather() {
   );
   const json = await tQuery.json();
   const tData = json.value.timeSeries[0].values[0].value[0];
-  console.log(tData.value);
   let cTemp = document.getElementById("cTemp");
   cTemp.innerHTML = Math.round(tData.value);
   let fTemp = document.getElementById("fTemp");
   fTemp.innerHTML = Math.round((parseFloat(tData.value) * 9) / 5 + 32);
+  console.log(tData.value);
 
   const wQuery = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=Portland,US&APPID=63cb903c39551c9117b8fbbb82699d36`,

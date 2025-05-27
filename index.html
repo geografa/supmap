@@ -56,10 +56,10 @@
     />
 
     <link
-      href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
+      href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css"
       rel="stylesheet"
     />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
     <!-- include weather.js -->
     <script src="./assets/js/weather.js"></script>
 
@@ -167,6 +167,10 @@
         font-family: "Bungee", sans-serif;
         color: #23646a;
         font-size: 2em;
+      }
+      .modal a {
+        color: #23646a;
+        text-decoration: underline;
       }
       /* The Close Button */
       .close {
@@ -320,9 +324,9 @@
   <body onload="getWeather()">
     <!-- <div>Portland 🌤 conditions: </div> -->
     <div class="banner">
-      🌡️ <span id="airfTemp" class="item">79</span>°F &nbsp;
-      <span id="aircTemp" class="item">26</span>°C &nbsp;| 💨 &nbsp;
-      <span id="wind" class="item">9</span> mph | &nbsp;
+      💧 <span id="fTemp" class="item"></span>°F &nbsp;
+      <span id="cTemp" class="item"></span>°C &nbsp;| 💨 &nbsp;
+      <span id="wind" class="item"></span> mph | &nbsp;
       <a
         href="https://player.streamguys.com/allclassical/tilicam/sgplayer/player.php"
         class="item"
@@ -450,7 +454,8 @@
           const desc = `
                     <img src='./assets/img/close_dark.svg' class='close' onclick='closeModal()' />
                     <img src='${image}' class='poster' />
-                    <div class='modal-content' id='desc'>${description}</div>`;
+                    <div class='modal-content' id='desc'>${description} <p><a href='https://www.google.com/maps/@${coordinates[1]},${coordinates[0]},15z' target='_blank'>Directions</a></p></div>
+                  `;
 
           var modal = document.getElementById("myModal");
           modal.innerHTML = heading + " " + desc;
