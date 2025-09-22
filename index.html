@@ -90,42 +90,6 @@
         color: #101010;
       }
 
-      .title-bar {
-        display: flex;
-        position: absolute;
-        background-color: rgb(35, 100, 106, 0.9);
-        color: #fff;
-        width: 100%;
-        z-index: 1;
-        top: 36px;
-        justify-content: space-evenly;
-        align-items: center;
-      }
-
-      .title-bar .logo {
-        padding: 10px;
-      }
-
-      .title-bar .share {
-        position: fixed;
-        top: 13px;
-        right: 20px;
-      }
-
-      .title-bar h1 {
-        font-family: "Bungee", Arial, Helvetica, sans-serif;
-        font-size: 4em;
-        font-style: italic;
-        font-variation-settings: "wdth" 75;
-        text-transform: uppercase;
-        margin: 0;
-        padding: 20px 2px;
-      }
-      .title-bar h3 {
-        font-family: "Bungee", Arial, Helvetica, sans-serif;
-        font-size: 1.17em;
-      }
-
       /* The Modal (background) */
       .modal {
         display: none; /* Hidden by default */
@@ -294,21 +258,6 @@
 
       /* create media queries for mobile */
       @media (max-width: 600px) {
-        .title-bar {
-          box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.4);
-        }
-
-        .title-bar h1 {
-          font-size: 2em;
-          text-align: left;
-          display: inline;
-          padding: 0px;
-        }
-        .title-bar h3 {
-          font-size: 1em;
-          display: inline;
-          font-family: "Bungee", sans-serif;
-        }
         .listings .item {
           font-size: 0.5em;
         }
@@ -335,13 +284,6 @@
       >&nbsp | &nbsp; <a href="./gear/index.html" class="item">Gear</a>&nbsp;
     </div>
 
-    <div class="title-bar">
-      <div class="logo">
-        <img src="./assets/img/logo.png" alt="SUP" />
-      </div>
-      <h1>best sup spots</h1>
-      <h3>of the pacnw</h3>
-    </div>
     <div id="myModal" class="modal"></div>
     <div id="map" class="map"></div>
     <script>
@@ -352,6 +294,8 @@
         style: "mapbox://styles/grafa/ckdhx8rpo01b61ip8o9e8fth3",
         center: [-122.3345875083181, 45.078029776299076],
         zoom: 7,
+        minZoom: 5,
+        maxZoom: 17,
         hash: false,
         // cooperativeGestures: true,
         attributionControl: false,
@@ -462,8 +406,13 @@
       });
 
       map.on("click", "osmw-launches", (e) => {
+        const popup = new mapboxgl.Popup({
+          closeOnClick: true,
+          closeButton: true,
+        });
+
         // add a popup for the launches layer
-        let popup = new mapboxgl.Popup()
+        popup
           .setLngLat(e.lngLat)
           .setHTML(
             "<h3>" +
@@ -486,10 +435,6 @@
             ".mapboxgl-popup-content"
           ).innerHTML += `<p>Use Fee: ${e.features[0].properties.USEFEE}</p>`;
         }
-        map.on("mouseleave", "osmw-launches", () => {
-          map.getCanvas().style.cursor = "";
-          popup.remove();
-        });
       });
 
       map.on("click", "slipways", (e) => {
