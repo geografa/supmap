@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta charset="utf-8" />
     <!-- HTML Meta Tags -->
-    <title>Best SUP Spots of the PacNW | Gear</title>
+    <title>Best SUP Spots of the PacNW</title>
     <meta name="description" content="" />
 
     <!-- Google / Search Engine Tags -->
@@ -61,7 +61,7 @@
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
     <!-- include weather.js -->
-    <script src="../assets/js/weather.js"></script>
+    <script src="./assets/js/weather.js"></script>
 
     <style>
       body {
@@ -69,62 +69,97 @@
         padding: 0;
         font-family: "Open Sans", sans-serif;
         -webkit-font-smoothing: antialiased;
-        background-color: #e7e0d4;
       }
 
       * {
         box-sizing: border-box;
       }
+      #header {
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
 
-      a {
-        color: #0699af;
+      /* updated centered container -> grid layout */
+      .centered-container {
+        margin: 20px auto;
+        padding: 10px;
+        max-width: 1000px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+
+      .centered-container ul {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        padding: 12px;
+        margin: 0;
+        list-style: none;
+      }
+
+      .centered-container li {
+        margin: 0;
+        padding: 10px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+      }
+
+      /* make the anchor a row: image left, text right */
+      .centered-container a {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        color: #404040;
+        text-decoration: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .centered-container img {
+        width: 80px;
+        height: auto;
+        display: block;
+        flex-shrink: 0;
+        border-radius: 4px;
+      }
+
+      .centered-container li > a > span {
+        display: block;
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      /* small tweaks for text inside items */
+      .centered-container .item-left {
+        margin: 0; /* no extra right margin needed now */
+      }
+
+      /* responsive: 2 columns on medium, 1 column on small screens */
+      @media (max-width: 900px) {
+        .centered-container ul {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 520px) {
+        .centered-container ul {
+          grid-template-columns: 1fr;
+        }
+
+        .centered-container img {
+          width: 64px;
+        }
       }
 
       a:hover {
-        color: #08b2cc;
-      }
-
-      .title-bar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: rgb(35, 100, 106, 0.9);
-        color: #fff;
-        width: 100%;
-      }
-
-      img {
-        max-width: 100%;
-      }
-
-      .title-bar .text {
-        padding-left: 10px;
-      }
-
-      .logo {
-        max-width: 100%;
-        padding-left: 10px;
-        flex-basis: 24%;
-      }
-
-      .title-bar h1 {
-        font-family: "Bungee", Arial, Helvetica, sans-serif;
-        font-size: 1.8em;
-        font-style: italic;
-        font-variation-settings: "wdth" 75;
-        text-transform: uppercase;
-        margin: 0;
-        padding: 20px 2px;
-      }
-      .title-bar h3 {
-        font-family: "Bungee", Arial, Helvetica, sans-serif;
-        font-size: 1.17em;
-        margin-top: 0;
+        color: #101010;
       }
 
       /* banner */
       .banner {
-        position: relative;
+        position: absolute;
         display: flex;
         top: 0;
         left: 0;
@@ -143,70 +178,6 @@
         color: #fff;
         text-decoration: underline;
       }
-      /* container */
-      #container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        padding-bottom: 20px;
-      }
-      .content {
-        font-family: "Outfit", sans-serif;
-        font-optical-sizing: auto;
-        /* font-weight: <weight>; */
-        font-style: normal;
-        font-size: 0.85em;
-        padding: 20px;
-        width: 100%; /* Could be more or less, depending on screen size */
-        line-height: 1.25em;
-      }
-      .content li {
-        margin-bottom: 10px;
-        list-style-type: none;
-        display: flex;
-        align-items: left;
-      }
-      li img {
-        width: 100px;
-        height: auto;
-        margin-right: 10px;
-        border: 2px solid #fff;
-      }
-
-      ::-webkit-scrollbar {
-        display: none;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: none;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: #03094d;
-        border-radius: 0;
-      }
-
-      /* create media queries for mobile */
-      @media (max-width: 600px) {
-        .title-bar {
-          box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.4);
-        }
-
-        .title-bar h1 {
-          font-size: 1.8em;
-          text-align: left;
-          display: flex;
-          align-items: start;
-          padding: 0px;
-        }
-        .title-bar h3 {
-          font-size: 1em;
-          /* display: inline; */
-          font-family: "Bungee", sans-serif;
-        }
-      }
-      @media (max-width: 600px) {
-      }
     </style>
   </head>
 
@@ -221,19 +192,9 @@
         class="item"
       >
         Live 📸</a
-      >&nbsp | &nbsp; <a href="./gear/index.html" class="item">Gear</a>&nbsp;
+      >&nbsp | &nbsp; <a href="../index.html" class="item">Map</a>&nbsp;
     </div>
-
-    <div class="title-bar">
-      <div class="logo">
-        <img src="../assets/img/logo.png" alt="SUP" />
-      </div>
-      <div class="text">
-        <h1>best sup spots</h1>
-        <h3>of the pacnw</h3>
-      </div>
-    </div>
-    <div id="container">
+    <div id="header">
       <div class="content">
         <h3>SUP Gear Recommendations</h3>
         <p>
@@ -247,8 +208,10 @@
           cover hosting and development costs, so we can keep sharing the best
           SUP spots in the Pacific Northwest.
         </p>
+      </div>
+      <div class="centered-container">
         <ul>
-          <li>
+          <li class="item-left">
             <a href="https://amzn.to/46fGFUf" target="_blank" rel="noopener"
               ><img
                 src="https://m.media-amazon.com/images/I/71uYNGpZWmL._AC_SX679_.jpg"
@@ -256,7 +219,7 @@
               />Shark 3 SUP Pump</a
             >
           </li>
-          <li>
+          <li class="item-left">
             <a href="https://amzn.to/44cV0hG" target="_blank" rel="noopener"
               ><img
                 src="https://m.media-amazon.com/images/I/819uv7EI3nL._AC_SX679_.jpg"
@@ -264,7 +227,7 @@
               />Floating Phone Case</a
             >
           </li>
-          <li>
+          <li class="item-left">
             <a href="https://amzn.to/4kaetFQ" target="_blank" rel="noopener"
               ><img
                 src="https://m.media-amazon.com/images/I/71l+gzHgvSL._AC_SX679_.jpg"
@@ -272,7 +235,7 @@
               />Emergency Whistles (required by law)</a
             >
           </li>
-          <li>
+          <li class="item-left">
             <a href="https://amzn.to/4nyDqO6" target="_blank" rel="noopener"
               ><img
                 src="https://m.media-amazon.com/images/I/51gtAdbzHmL._AC_SX679_.jpg"
@@ -280,7 +243,15 @@
               />Floatsup® Cup Paddle Board and Kayak Drink Holder</a
             >
           </li>
-          <li>
+          <li class="item-left">
+            <a href="https://amzn.to/428JQue" target="_blank" rel="noopener"
+              ><img
+                src="https://m.media-amazon.com/images/I/51JkFwReHzL._AC_SX300_SY300_QL70_FMwebp_.jpg"
+                alt="Quick Release Leash from Hala"
+              />Quick Release Leash from Hala</a
+            >
+          </li>
+          <li class="item-left">
             <a
               href="https://odfw.huntfishoregon.com/login"
               target="_blank"
@@ -292,8 +263,8 @@
             >
           </li>
         </ul>
-        <p>Thank you for supporting our community!</p>
       </div>
+      <p>Thank you for supporting our community!</p>
     </div>
   </body>
 </html>
