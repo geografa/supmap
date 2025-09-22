@@ -60,6 +60,12 @@
       rel="stylesheet"
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+    />
+
     <!-- include weather.js -->
     <script src="./assets/js/weather.js"></script>
 
@@ -164,7 +170,7 @@
 
       /* banner */
       .banner {
-        position: absolute;
+        position: relative;
         display: flex;
         top: 0;
         left: 0;
@@ -289,185 +295,253 @@
     <script>
       mapboxgl.accessToken =
         "pk.eyJ1IjoiZ3JhZmEiLCJhIjoiY2tkb3ZoNzZrMDZyMzMxbGo0YTF3ZHk2ZyJ9.u6m6_Sxxu5ITBuomsTyA3g";
-      const map = new mapboxgl.Map({
-        container: "map",
-        style: "mapbox://styles/grafa/ckdhx8rpo01b61ip8o9e8fth3",
-        center: [-122.3345875083181, 45.078029776299076],
-        zoom: 7,
-        minZoom: 5,
-        maxZoom: 17,
-        hash: false,
-        scrollZoom: false,
-        // cooperativeGestures: true,
-        attributionControl: false,
-      }).addControl(
-        new mapboxgl.AttributionControl({
-          customAttribution:
-            '<a href="https://www.oregon.gov/OSMB/Pages/index.aspx">OSMB</a>',
-        })
-      );
-
-      // write a async function to fetch the supspots.geojson file in the ./geojson folder
+      // --- preload sup spots data so the geocoder can search it (Mapbox forward geocode custom data example) ---
+      let supSpotsData = { type: "FeatureCollection", features: [] };
       const getSupSpots = async () => {
-        const response = await fetch("./assets/geojson/supspots.geojson");
-        const data = await response.json();
-        return data;
+        try {
+          const res = await fetch("./assets/geojson/supspots.geojson");
+          if (!res.ok)
+            throw new Error("Failed to load supspots.geojson: " + res.status);
+          const json = await res.json();
+          supSpotsData = json;
+          return json;
+        } catch (err) {
+          console.error("getSupSpots error:", err);
+          supSpotsData = { type: "FeatureCollection", features: [] };
+          return supSpotsData;
+        }
+      };
+      // Make closeModal available globally so inline onclick="closeModal()" works
+      window.closeModal = function () {
+        const modal = document.getElementById("myModal");
+        if (modal) modal.style.display = "none";
       };
 
-      /**
-       * Wait until the map loads to make changes to the map.
-       */
-      map.on("load", async () => {
-        const data = await getSupSpots();
-
-        // add source and layer for spots
-        map.addSource("sup_spots", {
-          type: "geojson",
-          data: data,
-          cluster: true,
-          clusterMaxZoom: 14, // Max zoom to cluster points on
-          clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
-          generateId: true,
-        });
-
-        // +++++++++++++ SUP SPOTS +++++++++++++
-        // add the layers for the clusters and unclustered points
-        map.addLayer({
-          id: "spot_clusters",
-          type: "circle",
-          source: "sup_spots",
-          filter: ["all", [">", "point_count", 0]],
-          paint: {
-            "circle-color": "#ec6157",
-            "circle-radius": ["step", ["get", "point_count"], 8, 1, 16, 3, 24],
-            "circle-stroke-width": 2,
-            "circle-stroke-color": "#fff",
-          },
-        });
-        // add the unclustered points layer
-        map.addLayer({
-          id: "spot_unclustered_points",
-          type: "symbol",
-          source: "sup_spots",
-          // create a filter that will hide the clusters and only show the points
-          filter: ["!", ["has", "point_count"]],
-          layout: {
-            "icon-image": "spots",
-            "icon-size": 0.5,
-            "icon-allow-overlap": true,
-          },
-        });
-        // add a label layer for the clusters
-        map.addLayer({
-          id: "spot_cluster_count",
-          type: "symbol",
-          source: "sup_spots",
-          filter: ["has", "point_count"],
-          layout: {
-            "text-field": "{point_count_abbreviated}",
-            "text-font": ["Arial Unicode MS Bold", "DIN Offc Pro Medium"],
-            "text-size": 16,
-          },
-          paint: {
-            "text-color": "#fff",
-          },
-        });
-        // add a listener for the click event on the clusters to expand the cluster and zoom in
-        map.on("click", "spot_clusters", (e) => {
-          const features = map.queryRenderedFeatures(e.point, {
-            layers: ["spot_clusters"],
-          });
-          const clusterId = features[0].properties.cluster_id;
-          map
-            .getSource("sup_spots")
-            .getClusterExpansionZoom(clusterId, (err, zoom) => {
-              if (err) return;
-              map.easeTo({
-                center: features[0].geometry.coordinates,
-                zoom: zoom,
-              });
+      // forwardGeocoder — returns matching features in the Mapbox geocoder result format
+      const forwardGeocoder = (query) => {
+        const matching = [];
+        if (!supSpotsData || !Array.isArray(supSpotsData.features))
+          return matching;
+        const term = query.toLowerCase();
+        for (const feature of supSpotsData.features) {
+          const title =
+            feature.properties &&
+            (feature.properties.title || feature.properties.name);
+          if (!title) continue;
+          if (title.toLowerCase().includes(term)) {
+            matching.push({
+              place_name: "🌲 " + title,
+              center: feature.geometry.coordinates,
+              geometry: feature.geometry,
             });
+          }
+        }
+        return matching;
+      };
+
+      // ensure we load supSpots before creating the map/geocoder so localGeocoder has data
+      (async function () {
+        await getSupSpots();
+
+        const map = new mapboxgl.Map({
+          container: "map",
+          style: "mapbox://styles/grafa/ckdhx8rpo01b61ip8o9e8fth3",
+          center: [-122.3345875083181, 45.078029776299076],
+          zoom: 7,
+          minZoom: 5,
+          maxZoom: 17,
+          hash: false,
+          // scrollZoom: false,
+          attributionControl: false,
+        }).addControl(
+          new mapboxgl.AttributionControl({
+            customAttribution:
+              '<a href="https://www.oregon.gov/OSMB/Pages/index.aspx">OSMB</a>',
+          })
+        );
+
+        // add zoom and rotation controls to the map.
+        map.addControl(new mapboxgl.NavigationControl(), "top-left");
+
+        // create geocoder that uses our forwardGeocoder as localGeocoder per the example
+        const geocoder = new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          mapboxgl: mapboxgl,
+          localGeocoder: (query) => forwardGeocoder(query),
+          marker: false,
+          placeholder: "Search for a location",
+          bbox: [-125.7655, 41.35902, -115.71895, 49.64348],
+          country: "us",
         });
 
-        // add a listener for the click event on the unclustered points to display a popup
-        map.on("click", "spot_unclustered_points", (e) => {
-          const coordinates = e.features[0].geometry.coordinates.slice();
-          const { title, image, description } = e.features[0].properties;
-          const heading = `<h3>${title}</h3>`;
-          const desc = `
+        // handle potential geocoder errors gracefully
+        geocoder.on("error", (err) =>
+          console.error("geocoder error event:", err)
+        );
+
+        map.addControl(geocoder, "top-right");
+        /**
+         * Wait until the map loads to make changes to the map.
+         */
+        map.on("load", async () => {
+          const data = await getSupSpots();
+
+          // add source and layer for spots
+          map.addSource("sup_spots", {
+            type: "geojson",
+            data: data,
+            cluster: true,
+            clusterMaxZoom: 14, // Max zoom to cluster points on
+            clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+            generateId: true,
+          });
+
+          // +++++++++++++ SUP SPOTS +++++++++++++
+          // add the layers for the clusters and unclustered points
+          map.addLayer({
+            id: "spot_clusters",
+            type: "circle",
+            source: "sup_spots",
+            filter: ["all", [">", "point_count", 0]],
+            paint: {
+              "circle-color": "#ec6157",
+              "circle-radius": [
+                "step",
+                ["get", "point_count"],
+                8,
+                1,
+                16,
+                3,
+                24,
+              ],
+              "circle-stroke-width": 2,
+              "circle-stroke-color": "#fff",
+            },
+          });
+          // add the unclustered points layer
+          map.addLayer({
+            id: "spot_unclustered_points",
+            type: "symbol",
+            source: "sup_spots",
+            // create a filter that will hide the clusters and only show the points
+            filter: ["!", ["has", "point_count"]],
+            layout: {
+              "icon-image": "spots",
+              "icon-size": 0.5,
+              "icon-allow-overlap": true,
+            },
+          });
+          // add a label layer for the clusters
+          map.addLayer({
+            id: "spot_cluster_count",
+            type: "symbol",
+            source: "sup_spots",
+            filter: ["has", "point_count"],
+            layout: {
+              "text-field": "{point_count_abbreviated}",
+              "text-font": ["Arial Unicode MS Bold", "DIN Offc Pro Medium"],
+              "text-size": 16,
+            },
+            paint: {
+              "text-color": "#fff",
+            },
+          });
+          // add a listener for the click event on the clusters to expand the cluster and zoom in
+          map.on("click", "spot_clusters", (e) => {
+            const features = map.queryRenderedFeatures(e.point, {
+              layers: ["spot_clusters"],
+            });
+            const clusterId = features[0].properties.cluster_id;
+            map
+              .getSource("sup_spots")
+              .getClusterExpansionZoom(clusterId, (err, zoom) => {
+                if (err) return;
+                map.easeTo({
+                  center: features[0].geometry.coordinates,
+                  zoom: zoom,
+                });
+              });
+          });
+
+          // add a listener for the click event on the unclustered points to display a popup
+          map.on("click", "spot_unclustered_points", (e) => {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const { title, image, description } = e.features[0].properties;
+            const heading = `<h3>${title}</h3>`;
+            const desc = `
                     <img src='./assets/img/close_dark.svg' class='close' onclick='closeModal()' />
                     <img src='${image}' class='poster' />
                     <div class='modal-content' id='desc'>${description} <p><a href='https://www.google.com/maps/@${coordinates[1]},${coordinates[0]},15z' target='_blank'>Directions</a></p></div>
                   `;
 
-          var modal = document.getElementById("myModal");
-          modal.innerHTML = heading + " " + desc;
-          modal.style.display = "block";
-        });
-      });
-
-      map.on("click", "osmw-launches", (e) => {
-        const popup = new mapboxgl.Popup({
-          closeOnClick: true,
-          closeButton: true,
+            var modal = document.getElementById("myModal");
+            modal.innerHTML = heading + " " + desc;
+            modal.style.display = "block";
+          });
         });
 
-        // add a popup for the launches layer
-        popup
-          .setLngLat(e.lngLat)
-          .setHTML(
-            "<h3>" +
-              e.features[0].properties.FACILNM +
-              "</h3><p>" +
-              e.features[0].properties.FACILTYPE +
-              "</p>"
-          )
-          .addTo(map);
-        // if the PHOTOURL property exists, add an image to the popup
-        if (e.features[0].properties.PHOTOURL) {
-          document.querySelector(
-            ".mapboxgl-popup-content"
-          ).innerHTML += `<img src='${e.features[0].properties.PHOTOURL}' />`;
-          popup.setLngLat(e.lngLat).addTo(map);
+        map.on("click", "osmw-launches", (e) => {
+          const popup = new mapboxgl.Popup({
+            closeOnClick: true,
+            closeButton: true,
+          });
+
+          // add a popup for the launches layer
+          popup
+            .setLngLat(e.lngLat)
+            .setHTML(
+              "<h3>" +
+                e.features[0].properties.FACILNM +
+                "</h3><p>" +
+                e.features[0].properties.FACILTYPE +
+                "</p>"
+            )
+            .addTo(map);
+          // if the PHOTOURL property exists, add an image to the popup
+          if (e.features[0].properties.PHOTOURL) {
+            document.querySelector(
+              ".mapboxgl-popup-content"
+            ).innerHTML += `<img src='${e.features[0].properties.PHOTOURL}' />`;
+            popup.setLngLat(e.lngLat).addTo(map);
+          }
+          // if use fee exists, add it to the popup
+          if (e.features[0].properties.USEFEE) {
+            document.querySelector(
+              ".mapboxgl-popup-content"
+            ).innerHTML += `<p>Use Fee: ${e.features[0].properties.USEFEE}</p>`;
+          }
+        });
+
+        map.on("click", "slipways", (e) => {
+          // add a popup for the launches layer
+          // if the name exists in the properties, use that, otherwise use the 'Slipway'
+          const name = e.features[0].properties.NAME
+            ? e.features[0].properties.NAME
+            : "Slipway";
+          let popup = new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML("<h3>Slipway</h3>")
+            .addTo(map);
+          map.on("mouseleave", "slipways", () => {
+            map.getCanvas().style.cursor = "";
+            popup.remove();
+          });
+        });
+
+        /**
+         * Use Mapbox GL JS's `flyTo` to move the camera smoothly
+         * a given center point.
+         **/
+        function flyToVenue(currentFeature) {
+          map.flyTo({
+            center: currentFeature.geometry.coordinates,
+            zoom: 14,
+            pitch: 60,
+          });
         }
-        // if use fee exists, add it to the popup
-        if (e.features[0].properties.USEFEE) {
-          document.querySelector(
-            ".mapboxgl-popup-content"
-          ).innerHTML += `<p>Use Fee: ${e.features[0].properties.USEFEE}</p>`;
-        }
-      });
 
-      map.on("click", "slipways", (e) => {
-        // add a popup for the launches layer
-        // if the name exists in the properties, use that, otherwise use the 'Slipway'
-        const name = e.features[0].properties.NAME
-          ? e.features[0].properties.NAME
-          : "Slipway";
-        let popup = new mapboxgl.Popup()
-          .setLngLat(e.lngLat)
-          .setHTML("<h3>Slipway</h3>")
-          .addTo(map);
-        map.on("mouseleave", "slipways", () => {
-          map.getCanvas().style.cursor = "";
-          popup.remove();
-        });
-      });
-
-      /**
-       * Use Mapbox GL JS's `flyTo` to move the camera smoothly
-       * a given center point.
-       **/
-      function flyToVenue(currentFeature) {
-        map.flyTo({
-          center: currentFeature.geometry.coordinates,
-          zoom: 14,
-          pitch: 60,
-        });
-      }
-      const closeModal = () => {
-        document.querySelector(".modal").style.display = "none";
-      };
+        // end async IIFE wrapper used so we can await getSupSpots() above
+      })();
     </script>
   </body>
 </html>
