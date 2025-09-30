@@ -234,6 +234,19 @@
         "type": "Point",
         "coordinates": [-122.95782360924528, 44.85838113973085]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "id-mckenzie-river",
+        "title": "McKenzie River, Leaburg Dam",
+        "image": "./assets/img/spots/leaburg-dam-mckenzie-river-2.jpg",
+        "description": "Location: About 20 miles east of Springfield, Oregon<br><br><strong>Access & Facilities</strong><ul><li>Cross the one-way bridge and turn left into the gravel parking lot</li><li>Parking: Free, no fee required</li><li>Facilities: Vault toilet available on site</li><li>Launch: Gentle gravel slope, easy carry from the lot to the water</li></ul><br><strong>Paddle Overview</strong><br>This is a flatwater stretch of the McKenzie River that offers an easy launch and a relaxing paddle experience. Heading upriver provides a scenic and mellow ride, with only a mild current to navigate.<br><br><img src='./assets/img/spots/leaburg-dam-mckenzie-river-3.jpg'><strong>Seasonal Highlights</strong><ul><li>Fall: A standout time to paddle, when the surrounding trees turn brilliant colors and the reflections create breathtaking scenery.</li><li>Year-round: Cold water temperatures, so plan accordingly.</li></ul><br><strong>Considerations</strong><ul><li>Noise: Highway traffic is audible in sections; focusing on the river’s natural beauty helps tune it out.</li><li>Conditions: Mild current but overall a safe and easy paddle suitable for most levels.</li></ul>"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.611041, 44.138281]
+      }
     }
   ]
 }
