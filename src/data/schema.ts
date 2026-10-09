@@ -50,7 +50,6 @@ export const rawSpotRowSchema = z.object({
   nearby: nearbySchema,
   lat: z.coerce.number().finite(),
   lng: z.coerce.number().finite(),
-  featured: boolFromSheet,
   published: boolFromSheet,
 });
 
@@ -69,7 +68,6 @@ export type Spot = {
   nearby: string[];
   lat: number;
   lng: number;
-  featured: boolean;
 };
 
 export function rowToSpot(
@@ -102,7 +100,6 @@ export function rowToSpot(
     nearby: row.nearby,
     lat: row.lat,
     lng: row.lng,
-    featured: row.featured,
   };
 }
 
@@ -125,7 +122,6 @@ export type SpotFeatureProperties = {
   water_type: string | null;
   difficulty: string | null;
   rating: number | null;
-  featured: boolean;
 };
 
 export function spotsToGeoJSON(
@@ -142,7 +138,6 @@ export function spotsToGeoJSON(
         water_type: s.waterType,
         difficulty: s.difficulty,
         rating: s.rating,
-        featured: s.featured,
       },
       geometry: {
         type: "Point",

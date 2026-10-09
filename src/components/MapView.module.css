@@ -13,6 +13,73 @@
   border-radius: 8px;
 }
 
+:global(.osmw-detail) {
+  padding: 0;
+  overflow: auto;
+  max-height: min(58vh, 260px);
+}
+
+:global(.osmw-photo) {
+  display: block;
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  background: #163a5c;
+}
+
+:global(.osmw-body) {
+  padding: 8px 10px 10px;
+}
+
+:global(.osmw-name) {
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+:global(.osmw-sub) {
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.3;
+  opacity: 0.9;
+}
+
+:global(.osmw-rows) {
+  display: grid;
+  gap: 3px;
+  margin-top: 8px;
+}
+
+:global(.osmw-row) {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+:global(.osmw-row span:first-child) {
+  opacity: 0.75;
+}
+
+:global(.osmw-note) {
+  margin: 8px 0 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+:global(.osmw-links) {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+:global(.osmw-links a) {
+  color: #fff;
+}
+
 :global(.mapboxgl-popup-content) {
   padding: 0;
   background: transparent;

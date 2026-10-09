@@ -24,7 +24,6 @@ const COLUMNS = [
   "nearby",
   "lat",
   "lng",
-  "featured",
   "published",
 ];
 
@@ -38,7 +37,6 @@ const ALIASES = {
   parking: ["parking"],
   weather: ["weather"],
   rating: ["rating", "stars"],
-  featured: ["featured"],
   youtube_url: ["youtube_url", "youtube", "video", "video_url"],
   id: ["id", "ID"],
 };
@@ -149,7 +147,6 @@ const rows = fc.features
     const descriptionRaw = pick(p, ALIASES.description);
     const youtube =
       pick(p, ALIASES.youtube_url) || extractYoutube(descriptionRaw);
-    const featured = String(pick(p, ALIASES.featured)).toLowerCase();
     const water =
       String(pick(p, ALIASES.water_type)).toLowerCase() ||
       inferWaterType(title, descriptionRaw);
@@ -181,7 +178,6 @@ const rows = fc.features
       nearby: "",
       lat: Number(lat).toFixed(6),
       lng: Number(lng).toFixed(6),
-      featured: ["true", "1", "yes"].includes(featured) ? "TRUE" : "FALSE",
       published: "TRUE",
     };
   });

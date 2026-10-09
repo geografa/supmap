@@ -91,7 +91,6 @@ function rowToSpot(row) {
       .filter(Boolean),
     lat,
     lng,
-    featured: bool(row.featured),
   };
 }
 

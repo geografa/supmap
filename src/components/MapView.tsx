@@ -11,10 +11,12 @@ const SOURCE_ID = "sup-spots";
 const CLUSTER_LAYER = "spot-clusters";
 const CLUSTER_COUNT = "spot-cluster-count";
 const UNCLUSTERED = "spot-unclustered";
-const FEATURED = "spot-featured";
 const SELECTED = "spot-selected";
 const OSMW_SOURCE = "osmw-launches";
 const OSMW_LAYER = "osmw-launches-dots";
+const SLIPWAYS_SOURCE = "slipways";
+const SLIPWAYS_LAYER = "slipways-dots";
+const MAP_STYLE = "mapbox://styles/grafa/cmv19mkj0002q01sm846ocirm";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -42,9 +44,7 @@ export function MapView() {
     const embed = detectEmbed();
     const map = new mapboxgl.Map({
       container: containerRef.current,
-      style:
-        import.meta.env.VITE_MAPBOX_STYLE ||
-        "mapbox://styles/grafa/ckdhx8rpo01b61ip8o9e8fth3",
+      style: import.meta.env.VITE_MAPBOX_STYLE || MAP_STYLE,
       center: [-122.33, 45.08],
       zoom: 6.5,
       minZoom: 5,
@@ -79,19 +79,15 @@ export function MapView() {
     });
 
     map.on("load", () => {
-      map.loadImage("./images/sup-icon.png", (err, image) => {
-        if (!err && image && !map.hasImage("sup-icon")) {
-          map.addImage("sup-icon", image, { sdf: false });
-        }
-        addLayers(map);
-        setMapReady(true);
-      });
+      addLayers(map);
+      setMapReady(true);
 
       // OSMW reference layer
       if (!map.getSource(OSMW_SOURCE)) {
         map.addSource(OSMW_SOURCE, {
           type: "vector",
           url: "mapbox://grafa.osmw-launches",
+          maxzoom: 16,
         });
         map.addLayer({
           id: OSMW_LAYER,
@@ -99,9 +95,29 @@ export function MapView() {
           source: OSMW_SOURCE,
           "source-layer": "osmw-launches",
           paint: {
-            "circle-radius": 3,
+            "circle-radius": ["interpolate", ["linear"], ["zoom"], 8, 3, 14, 7],
             "circle-color": "#204E79",
             "circle-opacity": 0.55,
+            "circle-stroke-width": 0.5,
+            "circle-stroke-color": "#fff",
+          },
+        });
+      }
+
+      if (!map.getSource(SLIPWAYS_SOURCE)) {
+        map.addSource(SLIPWAYS_SOURCE, {
+          type: "vector",
+          url: "mapbox://grafa.slipways",
+        });
+        map.addLayer({
+          id: SLIPWAYS_LAYER,
+          type: "circle",
+          source: SLIPWAYS_SOURCE,
+          "source-layer": "slipways",
+          paint: {
+            "circle-radius": ["interpolate", ["linear"], ["zoom"], 8, 3, 14, 7],
+            "circle-color": "#c47a3a",
+            "circle-opacity": 0.7,
             "circle-stroke-width": 0.5,
             "circle-stroke-color": "#fff",
           },
@@ -111,29 +127,58 @@ export function MapView() {
       popupRef.current = new mapboxgl.Popup({
         closeButton: false,
         closeOnClick: true,
+        focusAfterOpen: false,
         maxWidth: "240px",
         offset: 8,
       });
 
-      map.on("click", OSMW_LAYER, (e) => {
+      const showNamedPopup = (
+        e: mapboxgl.MapLayerMouseEvent,
+        fallback: string,
+      ) => {
         const f = e.features?.[0];
         if (!f || !popupRef.current) return;
         const name =
           (f.properties?.FACILNM as string) ||
           (f.properties?.name as string) ||
-          "Boat launch";
+          fallback;
         popupRef.current
+          .setMaxWidth("240px")
           .setLngLat(e.lngLat)
-          .setHTML(`<div class="${styles.osmwPopup}">${name}</div>`)
+          .setHTML(`<div class="${styles.osmwPopup}">${escapeHtml(name)}</div>`)
+          .addTo(map);
+      };
+
+      map.on("click", OSMW_LAYER, (e) => {
+        const f = e.features?.[0];
+        const popup = popupRef.current;
+        if (!f || !popup) return;
+        const spaceBelow = map.getContainer().clientHeight - e.point.y;
+        popup.options.anchor = spaceBelow < 300 ? "bottom" : "top";
+        popup
+          .setMaxWidth("280px")
+          .setLngLat(e.lngLat)
+          .setHTML(osmwLaunchPopupHtml(f.properties, styles.osmwPopup))
           .addTo(map);
       });
+      map.on("click", SLIPWAYS_LAYER, (e) => showNamedPopup(e, "Slipway"));
 
-      map.on("mouseenter", OSMW_LAYER, () => {
-        map.getCanvas().style.cursor = "pointer";
-      });
-      map.on("mouseleave", OSMW_LAYER, () => {
-        map.getCanvas().style.cursor = "";
-      });
+      for (const layer of [OSMW_LAYER, SLIPWAYS_LAYER]) {
+        map.on("mouseenter", layer, () => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+        map.on("mouseleave", layer, () => {
+          map.getCanvas().style.cursor = "";
+        });
+      }
+
+      // Clusters paint above launches, slipways, and individual spots.
+      if (map.getLayer(CLUSTER_LAYER)) map.moveLayer(CLUSTER_LAYER);
+      if (map.getLayer(CLUSTER_COUNT)) map.moveLayer(CLUSTER_COUNT);
+    });
+
+    map.on("zoom", () => {
+      console.log("zoom", map.getZoom());
     });
 
     const onFly = (ev: Event) => {
@@ -203,54 +248,14 @@ export function MapView() {
       id: UNCLUSTERED,
       type: "circle",
       source: SOURCE_ID,
-      filter: [
-        "all",
-        ["!", ["has", "point_count"]],
-        ["!=", ["get", "featured"], true],
-      ],
+      filter: ["!", ["has", "point_count"]],
       paint: {
         "circle-radius": 7,
-        "circle-color": "#204E79",
+        "circle-color": "#ec6157",
         "circle-stroke-width": 2,
         "circle-stroke-color": "#fff",
       },
     });
-
-    // Featured spots: larger teal circle + optional paddler icon
-    map.addLayer({
-      id: `${FEATURED}-circle`,
-      type: "circle",
-      source: SOURCE_ID,
-      filter: [
-        "all",
-        ["!", ["has", "point_count"]],
-        ["==", ["get", "featured"], true],
-      ],
-      paint: {
-        "circle-radius": 10,
-        "circle-color": "#23646a",
-        "circle-stroke-width": 2,
-        "circle-stroke-color": "#fff",
-      },
-    });
-
-    if (map.hasImage("sup-icon")) {
-      map.addLayer({
-        id: FEATURED,
-        type: "symbol",
-        source: SOURCE_ID,
-        filter: [
-          "all",
-          ["!", ["has", "point_count"]],
-          ["==", ["get", "featured"], true],
-        ],
-        layout: {
-          "icon-image": "sup-icon",
-          "icon-size": 0.4,
-          "icon-allow-overlap": true,
-        },
-      });
-    }
 
     map.addLayer({
       id: SELECTED,
@@ -292,33 +297,26 @@ export function MapView() {
       selectSpot(id, { snap: "half" });
     };
 
-    const spotLayers = [
-      UNCLUSTERED,
-      `${FEATURED}-circle`,
-      SELECTED,
-      ...(map.getLayer(FEATURED) ? [FEATURED] : []),
-    ];
+    const spotLayers = [UNCLUSTERED, SELECTED];
 
     for (const layer of spotLayers) {
       map.on("click", layer, clickSpot);
     }
 
     map.on("click", (e) => {
-      const layers = [...spotLayers, CLUSTER_LAYER, OSMW_LAYER].filter((id) =>
-        map.getLayer(id),
-      );
+      const layers = [
+        ...spotLayers,
+        CLUSTER_LAYER,
+        OSMW_LAYER,
+        SLIPWAYS_LAYER,
+      ].filter((id) => map.getLayer(id));
       const hits = map.queryRenderedFeatures(e.point, { layers });
       if (!hits.length) {
         selectSpot(null);
       }
     });
 
-    for (const layer of [
-      UNCLUSTERED,
-      `${FEATURED}-circle`,
-      CLUSTER_LAYER,
-      FEATURED,
-    ]) {
+    for (const layer of [UNCLUSTERED, CLUSTER_LAYER]) {
       if (!map.getLayer(layer)) continue;
       map.on("mouseenter", layer, () => {
         map.getCanvas().style.cursor = "pointer";
@@ -409,6 +407,104 @@ export function MapView() {
       aria-label="SUP spots map"
     />
   );
+}
+
+function propText(
+  props: mapboxgl.MapboxGeoJSONFeature["properties"],
+  key: string,
+): string {
+  const value = props?.[key];
+  if (value == null) return "";
+  const text = String(value).trim();
+  if (!text || text.toLowerCase() === "null" || text.toLowerCase() === "n/a") {
+    return "";
+  }
+  return text;
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function safeHttpUrl(raw: string): string {
+  try {
+    const url = new URL(raw);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return "";
+    if (url.protocol === "http:" && url.hostname.endsWith("oregon.gov")) {
+      url.protocol = "https:";
+    }
+    return url.href;
+  } catch {
+    return "";
+  }
+}
+
+function sameLabel(a: string, b: string): boolean {
+  return a.trim().toLowerCase() === b.trim().toLowerCase();
+}
+
+function osmwLaunchPopupHtml(
+  props: mapboxgl.MapboxGeoJSONFeature["properties"],
+  popupClass: string,
+): string {
+  const name = propText(props, "FACILNM") || "Boat launch";
+  const alias = propText(props, "FACILALIAS");
+  const water = propText(props, "WATERBODYNM");
+  const photo = safeHttpUrl(propText(props, "PHOTOURL"));
+  const website = safeHttpUrl(propText(props, "FACILURL"));
+  const phone = propText(props, "TELEPHONE");
+  const note = propText(props, "FACILCOMM");
+
+  const facts = [
+    ["Type", propText(props, "FACILTYPE")],
+    ["Ramp", propText(props, "RAMPTYPE")],
+    ["Use fee", propText(props, "USEFEE")],
+    ["Managed by", propText(props, "FACILMGR")],
+  ].filter(([, value]) => value);
+
+  const subtitle = [alias, water]
+    .filter((value) => value && !sameLabel(value, name))
+    .filter(
+      (value, index, all) =>
+        all.findIndex((item) => sameLabel(item, value)) === index,
+    );
+
+  const factHtml = facts
+    .map(
+      ([label, value]) =>
+        `<div class="osmw-row"><span>${escapeHtml(label)}</span><span>${escapeHtml(value)}</span></div>`,
+    )
+    .join("");
+
+  const links = [
+    phone
+      ? `<a href="tel:${escapeHtml(phone.replace(/[^\d+]/g, ""))}">${escapeHtml(phone)}</a>`
+      : "",
+    website
+      ? `<a href="${escapeHtml(website)}" target="_blank" rel="noopener noreferrer">Website</a>`
+      : "",
+  ]
+    .filter(Boolean)
+    .join("");
+
+  return `<div class="${popupClass} osmw-detail">
+    ${
+      photo
+        ? `<img class="osmw-photo" src="${escapeHtml(photo)}" alt="" onerror="this.remove()" />`
+        : ""
+    }
+    <div class="osmw-body">
+      <div class="osmw-name">${escapeHtml(name)}</div>
+      ${subtitle.map((value) => `<div class="osmw-sub">${escapeHtml(value)}</div>`).join("")}
+      ${factHtml ? `<div class="osmw-rows">${factHtml}</div>` : ""}
+      ${note ? `<p class="osmw-note">${escapeHtml(note)}</p>` : ""}
+      ${links ? `<div class="osmw-links">${links}</div>` : ""}
+    </div>
+  </div>`;
 }
 
 function cameraPadding(
