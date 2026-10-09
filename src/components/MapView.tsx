@@ -168,7 +168,8 @@ export function MapView() {
         });
       }
 
-      // Selected spot, then clusters, paint above launches and WDFW access sites.
+      // Spots, selected spot, then clusters, paint above launches and WDFW access sites.
+      if (map.getLayer(UNCLUSTERED)) map.moveLayer(UNCLUSTERED);
       if (map.getLayer(SELECTED)) map.moveLayer(SELECTED);
       if (map.getLayer(CLUSTER_LAYER)) map.moveLayer(CLUSTER_LAYER);
       if (map.getLayer(CLUSTER_COUNT)) map.moveLayer(CLUSTER_COUNT);
