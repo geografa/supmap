@@ -1,0 +1,22 @@
+.toast {
+  position: fixed;
+  bottom: calc(var(--drawer-peek) + 24px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-toast);
+  background: #1a1a1a;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  max-width: min(90vw, 360px);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .toast {
+    bottom: 32px;
+  }
+}

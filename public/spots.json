@@ -1,0 +1,425 @@
+[
+  {
+    "id": "ri",
+    "title": "Ross Island",
+    "tagline": "",
+    "description": "If you're in Portland proper, then Ross Island is a must-visit. Getting to Ross Island is pretty straightforward and very accessible from either Willamette Park or Sellwood Riverfront Park. There's lots of beach along Sellwood that you can hug for a while and if you're adventurous you can make it to the southern tip of Ross Island (aka \"Newb Beach\"). _Experienced paddlers will loop around the island for the 6 to 7 km trip or just hang out in the lagoon. This area gets really busy in the summer and lots of boats and jet skis will pass by. Be sure to stay out of the middle of the river and closer to shore (but watch out for remnant pilings as they will catch your fin and you'll be taking a dip)._",
+    "photoUrl": "./images/spots/ross-island-4.jpg",
+    "youtube": null,
+    "waterType": "river",
+    "difficulty": "intermediate",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "elk-rock",
+      "cedar",
+      "smith-bybee"
+    ],
+    "lat": 45.488453,
+    "lng": -122.661221,
+    "featured": false
+  },
+  {
+    "id": "merwin",
+    "title": "Merwin Lake (Yale Bridge)",
+    "tagline": "",
+    "description": "Merwin is a crowd fave. Just one hour away from Portland, you'll find yourself in a lush PNW forest, replete with fuzzy ferns and forest fairies. The parking is sparse at Yale Bridge so get there early (there's more parking at Cresap Bay). The staircase down to the launch is long and steep, guaranteed to scuff your board. _ Once you're in, it's a smooth ride to the picturesque cascades awaiting your IG stories. _And there's a rope under the bridge for a swingin good time.",
+    "photoUrl": "./images/spots/merwin-solo.jpg",
+    "youtube": null,
+    "waterType": "coastal",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "paradise",
+      "scappoose",
+      "lacamas"
+    ],
+    "lat": 45.96015,
+    "lng": -122.3715,
+    "featured": false
+  },
+  {
+    "id": "estacada",
+    "title": "Estacada Lake",
+    "tagline": "",
+    "description": "Also within an hour drive from Portland is Estacada Lake (aka Timber Park, Milo McIver SP). Estacada is approachable from either Milo or Timber Park. Just depends on if you want to pay the park fee. Timber Park has rentals from [Clackamas River Outfitters](https://clackamasriveroutfitters.com/paddle-board-kayak-rentals/) if you need a board. Estacada is also quite beautiful like Merwin with steep cliffs and a few cascades along the way.",
+    "photoUrl": "./images/spots/estacada-lake.jpg",
+    "youtube": null,
+    "waterType": "river",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "willamette-falls",
+      "narrows",
+      "cedar"
+    ],
+    "lat": 45.29564,
+    "lng": -122.34706,
+    "featured": false
+  },
+  {
+    "id": "narrows",
+    "title": "Willamette Narrows",
+    "tagline": "",
+    "description": "Like it says on the tin, Willamette Narrows can be a tricky paddle with mean and pointy rocks. Parking is at Willamette Park, the WP south of West Linn. From the beach closer to the mouth of the Tualatin River, head south and hug the shore till you get to the rocky stuff. Longer fins should watch for rocks. _ Once you're in there, poke around the little inlets for a snack or yoga break.",
+    "photoUrl": "./images/spots/narrows.jpg",
+    "youtube": null,
+    "waterType": "river",
+    "difficulty": "intermediate",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "willamette-falls",
+      "cedar",
+      "elk-rock"
+    ],
+    "lat": 45.33848,
+    "lng": -122.65148,
+    "featured": false
+  },
+  {
+    "id": "vancouver-lake",
+    "title": "Vancouver Lake, WA",
+    "tagline": "",
+    "description": "Vancouver Lake is probably one of the best paddles for beginners (and kids!). When it's not too windy, you can move around the shallow beach with ease. With such a large fetch, the wind can turn and it will be a tough paddle back if you get unlucky with the weather. Just be sure to check conditions before you go (as with all places, really).",
+    "photoUrl": "./images/spots/vancouver-lake.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "smith-bybee",
+      "scappoose",
+      "paradise"
+    ],
+    "lat": 45.68148,
+    "lng": -122.74192,
+    "featured": false
+  },
+  {
+    "id": "hagg-lake",
+    "title": "Hagg Lake",
+    "tagline": "",
+    "description": "Hagg is fun. Hagg is muddy. But Hagg is also really chill even for the kiddos.  Park at Boat Launch C and head north in the no-wake zone to explore the tributaries.",
+    "photoUrl": "./images/spots/hagg-lake.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "smith-bybee",
+      "vancouver-lake",
+      "ri"
+    ],
+    "lat": 45.48977,
+    "lng": -123.22922,
+    "featured": false
+  },
+  {
+    "id": "willamette-falls",
+    "title": "Willamette Falls",
+    "tagline": "",
+    "description": "Just south of Portland in the heart of Oregon City lie the dramatic views of Willamette Falls. While it's lined by derelict buildings ready for the next zombie film, the area is slated for a mix-use development by the [Confederated Tribes of Grand Ronde](https://pamplinmedia.com/pt/9-news/502927-403018-grand-ronde-plans-mixed-use-development-at-willamette-falls). As exciting as that news is, it's still a treat to get that close to the falls and hear its roar. _Careful of the swirlies and faster-than-you-think-current. Put in at Jon Storm Park under the I-205 bridge just off McLoughlin and head south to the mills.",
+    "photoUrl": "./images/spots/willamette-falls-2.jpg",
+    "youtube": null,
+    "waterType": "river",
+    "difficulty": "intermediate",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "narrows",
+      "cedar",
+      "elk-rock"
+    ],
+    "lat": 45.35443,
+    "lng": -122.61548,
+    "featured": false
+  },
+  {
+    "id": "smith-bybee",
+    "title": "Smith & Bybee",
+    "tagline": "",
+    "description": "Winter time paddling at Smith & Bybee Lakes is a must for birders and nutria spotters. The grasses and underwater shrubbery are way too thick in the spring and summer when Metro drains it to swamp status but the winter levels are great for a quick tour. The shrubs and trees above the water will make a maze-like setting so be sure you make a plan and know how to get back before you head out. S&B is tucked in the industrial part of North Portland just off Marine Drive. Park at the kayak and canoe launch and watch for bikers on the trail. Two things to note: Dogs are not allowed in the park and parking can be sketchy so don't leave any valuables in plain view.",
+    "photoUrl": "./images/spots/s&b.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "vancouver-lake",
+      "ri",
+      "elk-rock"
+    ],
+    "lat": 45.61175,
+    "lng": -122.72812,
+    "featured": false
+  },
+  {
+    "id": "lacamas",
+    "title": "Lacamas Lake, WA",
+    "tagline": "",
+    "description": "Located just a bit north of Portland in Washington is Lacamas Lake. As a tributary of the Columbia, it has a large surface area and can get quite windy. Stay close to the shore and paddle past a few bridges and watch for the lilies and floating logs. There's usually lots of other paddlers, kayakers, and swimmers as it's quite a popular spot.",
+    "photoUrl": "./images/spots/lacamas.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "ri",
+      "smith-bybee",
+      "vancouver-lake"
+    ],
+    "lat": 45.60996,
+    "lng": -122.42536,
+    "featured": false
+  },
+  {
+    "id": "scappoose",
+    "title": "Scappoose Bay",
+    "tagline": "",
+    "description": "Scappoose is a treat. The Bay has ample parking and Next Adventure is right there if you've forgotten something like, oh...your board. Follow the bay south along the west side of the shore until it opens up to the east. There you will find the tributary to South Scapoose Creek. Like Smith & Bybee, be sure to track where you're going because it can get a little maze-y out there.",
+    "photoUrl": "./images/spots/scappoose.jpg",
+    "youtube": null,
+    "waterType": "coastal",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "paradise",
+      "vancouver-lake",
+      "smith-bybee"
+    ],
+    "lat": 45.82762,
+    "lng": -122.83608,
+    "featured": false
+  },
+  {
+    "id": "crescent-lake",
+    "title": "Crescent Lake",
+    "tagline": "",
+    "description": "Once you're willing to make the drive further out, you'll be rewarded with the amazing Crescent Lake. The lake is nestled in the Cascades and is a popular for fishing and camping, too. _ Plan this in advance to get a sweet camp spot right by the beach.",
+    "photoUrl": "./images/spots/crescent-lake.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "waldo-lake"
+    ],
+    "lat": 43.46228,
+    "lng": -122.01369,
+    "featured": false
+  },
+  {
+    "id": "waldo-lake",
+    "title": "Waldo Lake",
+    "tagline": "",
+    "description": "Waldo Lake is a must-visit. It's a natural alpine lake and second deepest in Oregon next to Crater Lake. _ The water super clear and cold. 📸 Evan Le.",
+    "photoUrl": "./images/spots/waldo-lake.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "crescent-lake"
+    ],
+    "lat": 43.6917,
+    "lng": -122.04215,
+    "featured": false
+  },
+  {
+    "id": "paulina-lake",
+    "title": "Paulina Lake",
+    "tagline": "",
+    "description": "Paulina Lake is a twin crater lake in the Newberry Crater National Monument. _ Lots of great spots to paddle to, especially the hot springs. 📸 Evan Le.",
+    "photoUrl": "./images/spots/paulina-lake.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "deschutes"
+    ],
+    "lat": 43.71228,
+    "lng": -121.27598,
+    "featured": false
+  },
+  {
+    "id": "deschutes",
+    "title": "Deschutes River",
+    "tagline": "",
+    "description": "If you're in downtown Bend, be sure to pop into the Deschutes river for a float. You can also rent a board from [Tumalo Creek](https://tumalocreek.com/). _ There are a number of put-ins along the downtown stretch but parking is always a little scarce. 📸 Evan Le.",
+    "photoUrl": "./images/spots/deschutes.jpg",
+    "youtube": null,
+    "waterType": "river",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "paulina-lake"
+    ],
+    "lat": 44.04383,
+    "lng": -121.3148,
+    "featured": false
+  },
+  {
+    "id": "paradise",
+    "title": "Paradise Point",
+    "tagline": "",
+    "description": "Just north of Portland off I-5 is Paradise Point State Park. _ It's a small park with a small beach but it's a great spot to make a quick launch from. 📸 Evan Le.",
+    "photoUrl": "./images/spots/paradise.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "scappoose",
+      "vancouver-lake",
+      "merwin"
+    ],
+    "lat": 45.86581,
+    "lng": -122.70259,
+    "featured": false
+  },
+  {
+    "id": "cedar",
+    "title": "Cedar Oak",
+    "tagline": "",
+    "description": "Cedar Oak is a beginner-friendly spot. _ Poke around in the lagoon or head south to Meldrum Bar where you can watch the locals get their vehicles stuck in the sand. 📸 Evan Le.",
+    "photoUrl": "./images/spots/cedaroak.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "willamette-falls",
+      "elk-rock",
+      "narrows"
+    ],
+    "lat": 45.38941,
+    "lng": -122.6293,
+    "featured": false
+  },
+  {
+    "id": "elk-rock",
+    "title": "Elk Rock Island",
+    "tagline": "",
+    "description": "If you're short on time, Elk Rock Island is an easy jaunt from Milwaukie Bay Park (parking very limited). _ It's a small island with a small beach but it's a great spot to make a quick tour. If you're looking for a longer workout, head north from George Rogers Park. 📸 Evan Le.",
+    "photoUrl": "./images/spots/elk-rock.jpg",
+    "youtube": null,
+    "waterType": "coastal",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "cedar",
+      "ri",
+      "willamette-falls"
+    ],
+    "lat": 45.43583,
+    "lng": -122.64948,
+    "featured": false
+  },
+  {
+    "id": "turner",
+    "title": "Turner Lake",
+    "tagline": "",
+    "description": "Turner Lake Park (5203 Holly Street) was deeded to the City of Turner by Crawford Crossing LLC on April 11, 2018. Formerly the Riverbend Quarry, it had filled with ground water over the years, and would now become a park for the greater Turner community. Turn-n-Paddle is renting kayaks and SUP at Turner Lake Park 7 days a week 11-8pm (Dependent on weather conditions) through the end of September. Rentals are $20/hr for Paddle boards and $10/hr for Kayaks. For more information contact 503-983-1126. The boat ramp is now open and electric motors are allowed, with the entire lake a no wake, 5 mph speed limit, 14 Foot length limit. Fishing is allowed from boats or the bank. Park is open dawn to dusk every day unless the gate is closed. [More info 🔗](https://www.cityofturner.org/turnerlakepark)",
+    "photoUrl": "https://www.cityofturner.org/vertical/Sites/%7B85E5A386-9024-4192-A152-0B30E6890600%7D/uploads/Turner_Lake_Park_Boat_Ramp_2020_Web.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [],
+    "lat": 44.858381,
+    "lng": -122.957824,
+    "featured": false
+  },
+  {
+    "id": "mckenzie-river",
+    "title": "McKenzie River, Leaburg Dam",
+    "tagline": "",
+    "description": "Location: About 20 miles east of Springfield, Oregon\n\n**Access & Facilities**- Cross the one-way bridge and turn left into the gravel parking lot\n- Parking: Free, no fee required\n- Facilities: Vault toilet available on site\n- Launch: Gentle gravel slope, easy carry from the lot to the water\n\n**Paddle Overview**\nThis is a flatwater stretch of the McKenzie River that offers an easy launch and a relaxing paddle experience. Heading upriver provides a scenic and mellow ride, with only a mild current to navigate.\n\n_**Seasonal Highlights**- Fall: A standout time to paddle, when the surrounding trees turn brilliant colors and the reflections create breathtaking scenery.\n- Year-round: Cold water temperatures, so plan accordingly.\n\n**Considerations**- Noise: Highway traffic is audible in sections; focusing on the river’s natural beauty helps tune it out.\n- Conditions: Mild current but overall a safe and easy paddle suitable for most levels.\n__",
+    "photoUrl": "./images/spots/leaburg-dam-mckenzie-river-2.jpg",
+    "youtube": {
+      "videoId": "-lXLoydwICE"
+    },
+    "waterType": "river",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "dexter-lake"
+    ],
+    "lat": 44.138281,
+    "lng": -122.611041,
+    "featured": false
+  },
+  {
+    "id": "triangle-lake",
+    "title": "Triangle Lake",
+    "tagline": "",
+    "description": "Location: About 40 miles west of Eugene, Oregon\nExplore Triangle Lake, Oregon — a stunning 300-acre lake nestled in the Cascade Coast Range northwest of Eugene and one of the best places for stand-up paddleboarding in Lane County. With clear water, calm conditions, and easy access, Triangle Lake is a must-paddle destination for both beginners and experienced SUP riders. Triangle Lake is surrounded by private homes, but the Lane County Park provides convenient public access for kayaking, paddleboarding, and summer lake adventures. Whether you’re planning a weekend paddle near Eugene or looking for the next spot to add to your Oregon SUP map.",
+    "photoUrl": "http://www.oregon.gov/osmb/SiteCollectionImages/Map/TriangleLakeLanding2009.jpg",
+    "youtube": null,
+    "waterType": "coastal",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [],
+    "lat": 44.173925,
+    "lng": -123.58095,
+    "featured": false
+  },
+  {
+    "id": "dexter-lake",
+    "title": "Dexter Lake",
+    "tagline": "",
+    "description": "Location: Dexter Lake, where calm waters, fall colors, and easy access make it an Oregon favorite. You can launch right off Highway 58, or cross the covered bridge to the Lowell Recreation area on the opposite side — both offer plenty of space to explore or just relax on the shore.\nOnly 20 minutes east of Eugene, Dexter Lake is perfect for all paddlers — from beginners to those just out for a mellow fall float. Best of all, there’s no parking fee and tons of open water to roam.",
+    "photoUrl": "http://www.oregon.gov/osmb/SiteCollectionImages/Map/TriangleLakeLanding2009.jpg",
+    "youtube": null,
+    "waterType": "lake",
+    "difficulty": "beginner",
+    "parking": "",
+    "weather": "",
+    "rating": null,
+    "nearby": [
+      "mckenzie-river"
+    ],
+    "lat": 43.921112,
+    "lng": -122.79685,
+    "featured": false
+  }
+]

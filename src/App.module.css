@@ -1,0 +1,68 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.mapFallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+  background: #e8e6df;
+}
+
+.chrome {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: var(--z-search);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.chrome > * {
+  pointer-events: auto;
+}
+
+.error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: var(--z-toast);
+  background: #fff;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-family: var(--font-body);
+  color: var(--color-coral-dark);
+}
+
+@media (min-width: 768px) {
+  .chrome {
+    left: 16px;
+    right: auto;
+    width: min(360px, calc(100vw - 48px));
+    transition: left 250ms ease;
+  }
+
+  .chromeShifted {
+    left: calc(var(--sidebar-width) + 16px);
+    width: min(360px, calc(100vw - var(--sidebar-width) - 32px));
+  }
+}

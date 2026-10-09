@@ -9,7 +9,6 @@ async function getWeather() {
   cTemp.innerHTML = Math.round(tData.value);
   let fTemp = document.getElementById("fTemp");
   fTemp.innerHTML = Math.round((parseFloat(tData.value) * 9) / 5 + 32);
-  console.log(tData.value);
 
   const wQuery = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=Portland,US&APPID=63cb903c39551c9117b8fbbb82699d36`,
@@ -17,7 +16,6 @@ async function getWeather() {
   );
   const wData = await wQuery.json();
   // console.log(wData.wind.speed);
-  console.log(wData.main.temp);
   let wind = document.getElementById("wind");
   wind.innerHTML = JSON.stringify(Math.round(wData.wind.speed * 2.237));
   let aircTemp = document.getElementById("aircTemp");

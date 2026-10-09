@@ -1,0 +1,25 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.badge {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.water {
+  background: #d8eef0;
+  color: var(--color-teal);
+}
+
+.diff {
+  background: #fde8e6;
+  color: var(--color-coral-dark);
+}

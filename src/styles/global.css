@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  background: var(--color-bg);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a {
+  color: var(--color-teal);
+}
+
+.mapboxgl-ctrl-top-right {
+  top: 12px !important;
+  right: 12px !important;
+}
+
+@media (max-width: 767px) {
+  .mapboxgl-ctrl-top-right {
+    top: auto !important;
+    bottom: calc(var(--drawer-peek) + 12px) !important;
+  }
+}

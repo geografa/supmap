@@ -1,0 +1,23 @@
+:root {
+  --color-coral: #ec6157;
+  --color-coral-dark: #c84f46;
+  --color-teal: #1f4e79;
+  --color-teal-light: #316e98;
+  --color-cream: #c8c7b2;
+  --color-bg: #f7f6f2;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #5a5a5a;
+  --color-border: #e5e3da;
+  --font-display: "Bungee", sans-serif;
+  --font-body: "Outfit", sans-serif;
+  --sidebar-width: 400px;
+  --drawer-peek: 96px;
+  --radius: 12px;
+  --shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  --z-map: 1;
+  --z-panel: 10;
+  --z-search: 20;
+  --z-banner: 25;
+  --z-toast: 50;
+}

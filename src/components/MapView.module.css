@@ -1,0 +1,52 @@
+.map {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-map);
+}
+
+.osmwPopup {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #fff;
+  background: var(--color-teal);
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+:global(.mapboxgl-popup-content) {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+:global(.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip) {
+  border-top-color: var(--color-teal);
+}
+
+:global(.mapboxgl-popup-anchor-top .mapboxgl-popup-tip) {
+  border-bottom-color: var(--color-teal);
+}
+
+:global(.mapboxgl-popup-anchor-left .mapboxgl-popup-tip) {
+  border-right-color: var(--color-teal);
+}
+
+:global(.mapboxgl-popup-anchor-right .mapboxgl-popup-tip) {
+  border-left-color: var(--color-teal);
+}
+
+:global(.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip) {
+  border-bottom-color: var(--color-teal);
+}
+
+:global(.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip) {
+  border-bottom-color: var(--color-teal);
+}
+
+:global(.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip) {
+  border-top-color: var(--color-teal);
+}
+
+:global(.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip) {
+  border-top-color: var(--color-teal);
+}

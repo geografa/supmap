@@ -7,3 +7,11 @@ _site/
 .jekyll-cache/
 /archive
 supmap-prd.md
+/tmp
+node_modules/
+dist/
+.env
+.env.local
+*.local
+.vite/
+.env
