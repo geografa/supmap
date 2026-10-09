@@ -14,8 +14,8 @@ const UNCLUSTERED = "spot-unclustered";
 const SELECTED = "spot-selected";
 const OSMW_SOURCE = "osmw-launches";
 const OSMW_LAYER = "osmw-launches-dots";
-const SLIPWAYS_SOURCE = "slipways";
-const SLIPWAYS_LAYER = "slipways-dots";
+const WDFW_SOURCE = "wdfw-access";
+const WDFW_LAYER = "wdfw-access-dots";
 const MAP_STYLE = "mapbox://styles/grafa/cmv19mkj0002q01sm846ocirm";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -56,7 +56,7 @@ export function MapView() {
     map.addControl(
       new mapboxgl.AttributionControl({
         customAttribution:
-          '<a href="https://www.oregon.gov/OSMB/Pages/index.aspx">OSMB</a>',
+          '<a href="https://www.oregon.gov/OSMB/Pages/index.aspx">OSMB</a> | <a href="https://data-wdfw.opendata.arcgis.com/maps/wdfw::water-access-sites-2/about">WDFW</a>',
       }),
     );
 
@@ -104,16 +104,20 @@ export function MapView() {
         });
       }
 
-      if (!map.getSource(SLIPWAYS_SOURCE)) {
-        map.addSource(SLIPWAYS_SOURCE, {
+      if (!map.getSource(WDFW_SOURCE)) {
+        // This tileset's .vector.pbf tiles 404; the .mvt endpoint serves the same data.
+        map.addSource(WDFW_SOURCE, {
           type: "vector",
-          url: "mapbox://grafa.slipways",
+          tiles: [
+            `https://api.mapbox.com/v4/grafa.vp7o2ag14hn9/{z}/{x}/{y}.mvt?access_token=${mapboxgl.accessToken}`,
+          ],
+          maxzoom: 12,
         });
         map.addLayer({
-          id: SLIPWAYS_LAYER,
+          id: WDFW_LAYER,
           type: "circle",
-          source: SLIPWAYS_SOURCE,
-          "source-layer": "slipways",
+          source: WDFW_SOURCE,
+          "source-layer": "ptrkizhhq65hkobp89i8",
           paint: {
             "circle-radius": ["interpolate", ["linear"], ["zoom"], 8, 3, 14, 7],
             "circle-color": "#c47a3a",
@@ -132,24 +136,10 @@ export function MapView() {
         offset: 8,
       });
 
-      const showNamedPopup = (
+      const showDetailPopup = (
         e: mapboxgl.MapLayerMouseEvent,
-        fallback: string,
+        toHtml: (props: FeatureProps, popupClass: string) => string,
       ) => {
-        const f = e.features?.[0];
-        if (!f || !popupRef.current) return;
-        const name =
-          (f.properties?.FACILNM as string) ||
-          (f.properties?.name as string) ||
-          fallback;
-        popupRef.current
-          .setMaxWidth("240px")
-          .setLngLat(e.lngLat)
-          .setHTML(`<div class="${styles.osmwPopup}">${escapeHtml(name)}</div>`)
-          .addTo(map);
-      };
-
-      map.on("click", OSMW_LAYER, (e) => {
         const f = e.features?.[0];
         const popup = popupRef.current;
         if (!f || !popup) return;
@@ -158,12 +148,18 @@ export function MapView() {
         popup
           .setMaxWidth("280px")
           .setLngLat(e.lngLat)
-          .setHTML(osmwLaunchPopupHtml(f.properties, styles.osmwPopup))
+          .setHTML(toHtml(f.properties, styles.osmwPopup))
           .addTo(map);
-      });
-      map.on("click", SLIPWAYS_LAYER, (e) => showNamedPopup(e, "Slipway"));
+      };
 
-      for (const layer of [OSMW_LAYER, SLIPWAYS_LAYER]) {
+      map.on("click", OSMW_LAYER, (e) =>
+        showDetailPopup(e, osmwLaunchPopupHtml),
+      );
+      map.on("click", WDFW_LAYER, (e) =>
+        showDetailPopup(e, wdfwAccessPopupHtml),
+      );
+
+      for (const layer of [OSMW_LAYER, WDFW_LAYER]) {
         map.on("mouseenter", layer, () => {
           map.getCanvas().style.cursor = "pointer";
         });
@@ -172,13 +168,10 @@ export function MapView() {
         });
       }
 
-      // Clusters paint above launches, slipways, and individual spots.
+      // Selected spot, then clusters, paint above launches and WDFW access sites.
+      if (map.getLayer(SELECTED)) map.moveLayer(SELECTED);
       if (map.getLayer(CLUSTER_LAYER)) map.moveLayer(CLUSTER_LAYER);
       if (map.getLayer(CLUSTER_COUNT)) map.moveLayer(CLUSTER_COUNT);
-    });
-
-    map.on("zoom", () => {
-      console.log("zoom", map.getZoom());
     });
 
     const onFly = (ev: Event) => {
@@ -308,7 +301,7 @@ export function MapView() {
         ...spotLayers,
         CLUSTER_LAYER,
         OSMW_LAYER,
-        SLIPWAYS_LAYER,
+        WDFW_LAYER,
       ].filter((id) => map.getLayer(id));
       const hits = map.queryRenderedFeatures(e.point, { layers });
       if (!hits.length) {
@@ -409,10 +402,9 @@ export function MapView() {
   );
 }
 
-function propText(
-  props: mapboxgl.MapboxGeoJSONFeature["properties"],
-  key: string,
-): string {
+type FeatureProps = mapboxgl.MapboxGeoJSONFeature["properties"];
+
+function propText(props: FeatureProps, key: string): string {
   const value = props?.[key];
   if (value == null) return "";
   const text = String(value).trim();
@@ -447,33 +439,34 @@ function sameLabel(a: string, b: string): boolean {
   return a.trim().toLowerCase() === b.trim().toLowerCase();
 }
 
-function osmwLaunchPopupHtml(
-  props: mapboxgl.MapboxGeoJSONFeature["properties"],
-  popupClass: string,
-): string {
-  const name = propText(props, "FACILNM") || "Boat launch";
-  const alias = propText(props, "FACILALIAS");
-  const water = propText(props, "WATERBODYNM");
-  const photo = safeHttpUrl(propText(props, "PHOTOURL"));
-  const website = safeHttpUrl(propText(props, "FACILURL"));
-  const phone = propText(props, "TELEPHONE");
-  const note = propText(props, "FACILCOMM");
+/** Positive integer count from a field, or 0 when missing or not a number. */
+function propCount(props: FeatureProps, key: string): number {
+  const n = Number(propText(props, key));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 0;
+}
 
-  const facts = [
-    ["Type", propText(props, "FACILTYPE")],
-    ["Ramp", propText(props, "RAMPTYPE")],
-    ["Use fee", propText(props, "USEFEE")],
-    ["Managed by", propText(props, "FACILMGR")],
-  ].filter(([, value]) => value);
+type DetailPopup = {
+  name: string;
+  subtitles?: string[];
+  facts?: [label: string, value: string][];
+  note?: string;
+  photo?: string;
+  phone?: string;
+  website?: string;
+};
 
-  const subtitle = [alias, water]
+function detailPopupHtml(popup: DetailPopup, popupClass: string): string {
+  const { name, note, photo, phone, website } = popup;
+
+  const subtitles = (popup.subtitles ?? [])
     .filter((value) => value && !sameLabel(value, name))
     .filter(
       (value, index, all) =>
         all.findIndex((item) => sameLabel(item, value)) === index,
     );
 
-  const factHtml = facts
+  const factHtml = (popup.facts ?? [])
+    .filter(([, value]) => value)
     .map(
       ([label, value]) =>
         `<div class="osmw-row"><span>${escapeHtml(label)}</span><span>${escapeHtml(value)}</span></div>`,
@@ -499,12 +492,72 @@ function osmwLaunchPopupHtml(
     }
     <div class="osmw-body">
       <div class="osmw-name">${escapeHtml(name)}</div>
-      ${subtitle.map((value) => `<div class="osmw-sub">${escapeHtml(value)}</div>`).join("")}
+      ${subtitles.map((value) => `<div class="osmw-sub">${escapeHtml(value)}</div>`).join("")}
       ${factHtml ? `<div class="osmw-rows">${factHtml}</div>` : ""}
       ${note ? `<p class="osmw-note">${escapeHtml(note)}</p>` : ""}
       ${links ? `<div class="osmw-links">${links}</div>` : ""}
     </div>
   </div>`;
+}
+
+function osmwLaunchPopupHtml(props: FeatureProps, popupClass: string): string {
+  return detailPopupHtml(
+    {
+      name: propText(props, "FACILNM") || "Boat launch",
+      subtitles: [
+        propText(props, "FACILALIAS"),
+        propText(props, "WATERBODYNM"),
+      ],
+      facts: [
+        ["Type", propText(props, "FACILTYPE")],
+        ["Ramp", propText(props, "RAMPTYPE")],
+        ["Use fee", propText(props, "USEFEE")],
+        ["Managed by", propText(props, "FACILMGR")],
+      ],
+      note: propText(props, "FACILCOMM"),
+      photo: safeHttpUrl(propText(props, "PHOTOURL")),
+      phone: propText(props, "TELEPHONE"),
+      website: safeHttpUrl(propText(props, "FACILURL")),
+    },
+    popupClass,
+  );
+}
+
+function wdfwAccessPopupHtml(props: FeatureProps, popupClass: string): string {
+  const county = propText(props, "County");
+  const closure = propText(props, "ClosureType");
+  const ramps = propCount(props, "BoatRamps");
+  const rampSurface = propText(props, "BoatRampSurfaceTypes");
+  const handLaunches = propCount(props, "HandLaunches");
+  const parkingLots = propCount(props, "ParkingLots");
+  const restrooms = propCount(props, "Restrooms");
+
+  const rampText = ramps
+    ? [String(ramps), rampSurface].filter(Boolean).join(" · ")
+    : "";
+
+  return detailPopupHtml(
+    {
+      name: propText(props, "WaterAccessSiteName") || "Water access site",
+      subtitles: [county ? `${county} County` : ""],
+      facts: [
+        ["Managed by", propText(props, "ManagingEntity")],
+        ["Open", propText(props, "OpenDates")],
+        ["Closure", sameLabel(closure, "No closure") ? "" : closure],
+        ["Boat ramps", rampText],
+        [
+          "Boarding float",
+          ramps ? propText(props, "BoatRampHasBoardingFloat") : "",
+        ],
+        ["Hand launches", handLaunches ? String(handLaunches) : ""],
+        ["Parking lots", parkingLots ? String(parkingLots) : ""],
+        ["Restrooms", restrooms ? String(restrooms) : ""],
+        ["Camping", propText(props, "CampingAllowed")],
+      ],
+      note: propText(props, "Notes"),
+    },
+    popupClass,
+  );
 }
 
 function cameraPadding(
