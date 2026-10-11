@@ -82,6 +82,10 @@ export function MapView() {
       addLayers(map);
       setMapReady(true);
 
+      const firstLabelLayer = map
+        .getStyle()
+        .layers?.find((l) => l.type === "symbol")?.id;
+
       // OSMW reference layer
       if (!map.getSource(OSMW_SOURCE)) {
         map.addSource(OSMW_SOURCE, {
@@ -101,7 +105,7 @@ export function MapView() {
             "circle-stroke-width": 0.5,
             "circle-stroke-color": "#fff",
           },
-        });
+        }, firstLabelLayer);
       }
 
       if (!map.getSource(WDFW_SOURCE)) {
@@ -125,7 +129,7 @@ export function MapView() {
             "circle-stroke-width": 0.5,
             "circle-stroke-color": "#fff",
           },
-        });
+        }, firstLabelLayer);
       }
 
       popupRef.current = new mapboxgl.Popup({
